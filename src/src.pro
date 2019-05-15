@@ -26,10 +26,16 @@ CONFIG += c++11
 
 SOURCES += \
         main.cpp \
-        mainwindow.cpp
+        mainwindow.cpp \
+        node.cpp \
+        tree.cpp \
+        treeiterator.cpp
 
 HEADERS += \
-        mainwindow.h
+        mainwindow.h \
+        node.h \
+        tree.h \
+        treeiterator.h
 
 FORMS += \
         mainwindow.ui
