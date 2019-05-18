@@ -30,7 +30,7 @@
      </size>
     </property>
     <property name="currentIndex">
-     <number>0</number>
+     <number>1</number>
     </property>
     <widget class="QWidget" name="userTab">
      <attribute name="title">
@@ -297,7 +297,7 @@
             <string>Комплектации автомобилей</string>
            </property>
           </widget>
-          <widget class="QPushButton" name="pushButton">
+          <widget class="QPushButton" name="addButton">
            <property name="geometry">
             <rect>
              <x>340</x>

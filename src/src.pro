@@ -25,19 +25,24 @@ DEFINES += QT_DEPRECATED_WARNINGS
 CONFIG += c++11
 
 SOURCES += \
+        Windows/form.cpp \
         main.cpp \
         mainwindow.cpp \
         node.cpp \
+        statemanager.cpp \
         tree.cpp \
         treeiterator.cpp
 
 HEADERS += \
+        Windows/form.h \
         mainwindow.h \
         node.h \
+        statemanager.h \
         tree.h \
         treeiterator.h
 
 FORMS += \
+        Windows/form.ui \
         mainwindow.ui
 
 # Default rules for deployment.

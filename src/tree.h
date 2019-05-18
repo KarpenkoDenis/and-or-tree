@@ -14,6 +14,7 @@ class Tree
 public:
     Tree();
     Node parent;
+    QString name;
 
     void addNode( int parentID, QString name, type t);
     void deleteNode( int id);
@@ -39,6 +40,7 @@ public:
 //    std::unique_ptr<int[]> data;
 //    std::unique_ptr<int[]> data;
 
+    void setName(const QString &value);
 };
 
 #endif // TREE_H

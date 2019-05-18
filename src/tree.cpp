@@ -5,6 +5,11 @@ Tree::Tree()
 
 }
 
+void Tree::setName(const QString &value)
+{
+    name = value;
+}
+
 void Tree::addNode(int parentID, QString name, type t)
 {
     parent.addNode(parentID, name, t);
