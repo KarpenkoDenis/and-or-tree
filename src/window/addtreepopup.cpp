@@ -17,6 +17,10 @@ AddTreePopup::~AddTreePopup()
 
 void AddTreePopup::makeTree()
 {
-    emit createTree( ui->textName->text());
+    QString treeName = ui->textName->text();
+    if (treeName.length() > 0){
+        emit createTree(treeName);
+        close();
+    }
 }
 
