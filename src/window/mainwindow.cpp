@@ -13,6 +13,8 @@ MainWindow::MainWindow(QWidget *parent) :
 {
     initializeUi();
     defineConnects();
+    // We can restore the trees only after the signals/slots are initialized
+    stateManager->restoreTrees();
 }
 
 MainWindow::~MainWindow()

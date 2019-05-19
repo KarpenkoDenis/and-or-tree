@@ -81,3 +81,14 @@ Tree::iterator Tree::end()
 //{
 //    return const_iterator(data.get() + size);
 //}
+QDataStream& operator<<(QDataStream& os, const Tree& tree)
+{
+    os << tree.name;
+    return os;
+}
+
+QDataStream& operator>>(QDataStream& is, Tree& tree)
+{
+    is >> tree.name;
+    return is;
+}
