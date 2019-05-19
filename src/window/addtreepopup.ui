@@ -31,7 +31,7 @@
     <string>Введите название новой комплектации:</string>
    </property>
   </widget>
-  <widget class="QLineEdit" name="textName">
+  <widget class="QLineEdit" name="treeNameLineEdit">
    <property name="geometry">
     <rect>
      <x>20</x>
@@ -59,7 +59,7 @@
      </widget>
     </item>
     <item>
-     <widget class="QPushButton" name="pushButton">
+     <widget class="QPushButton" name="cancelButton">
       <property name="text">
        <string>Отмена</string>
       </property>
@@ -71,7 +71,7 @@
  <resources/>
  <connections>
   <connection>
-   <sender>pushButton</sender>
+   <sender>cancelButton</sender>
    <signal>clicked(bool)</signal>
    <receiver>AddTreePopup</receiver>
    <slot>close()</slot>
@@ -87,7 +87,7 @@
    </hints>
   </connection>
   <connection>
-   <sender>pushButton</sender>
+   <sender>cancelButton</sender>
    <signal>clicked()</signal>
    <receiver>AddTreePopup</receiver>
    <slot>close()</slot>

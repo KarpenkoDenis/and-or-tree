@@ -14,12 +14,13 @@ private:
 public:
     explicit StateManager(QObject *parent = nullptr);
     QVector<Tree> getTrees() const;
-//    void addTree(Tree);
 
 signals:
+    void treeCreated(Tree tree);
 
 public slots:
-    void addTree(const QString &name);
+    void createTree(const QString &name);
+
 };
 
 #endif // STATEMANAGER_H

@@ -5,6 +5,11 @@ Tree::Tree()
 
 }
 
+QString Tree::getName() const
+{
+    return name;
+}
+
 void Tree::setName(const QString &value)
 {
     name = value;

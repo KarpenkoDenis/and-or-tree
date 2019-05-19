@@ -41,6 +41,8 @@ public:
 //    std::unique_ptr<int[]> data;
 
     void setName(const QString &value);
+
+    QString getName() const;
 };
 
 #endif // TREE_H

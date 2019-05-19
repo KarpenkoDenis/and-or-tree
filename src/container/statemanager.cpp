@@ -1,20 +1,23 @@
 #include "statemanager.h"
 #include <QDebug>
 
+
+StateManager::StateManager(QObject *parent) : QObject(parent)
+{
+    //    trees.append(Tree());
+}
+
 QVector<Tree> StateManager::getTrees() const
 {
     return trees;
 }
 
-void StateManager::addTree(const QString &name)
+void StateManager::createTree(const QString &name)
 {
     Tree tree;
     tree.setName(name);
     trees.append(tree);
-    qDebug() << "123";
-}
+    qDebug() << "Tree with name '" + name + "' was created.";
 
-StateManager::StateManager(QObject *parent) : QObject(parent)
-{
-//    trees.append(Tree());
+    emit treeCreated(tree);
 }

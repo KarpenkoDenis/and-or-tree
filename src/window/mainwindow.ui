@@ -310,93 +310,36 @@
             <string>Добавить комплектацию</string>
            </property>
           </widget>
-          <widget class="QLabel" name="label_5">
+          <widget class="QWidget" name="verticalLayoutWidget">
            <property name="geometry">
             <rect>
-             <x>20</x>
-             <y>110</y>
-             <width>161</width>
-             <height>16</height>
+             <x>10</x>
+             <y>40</y>
+             <width>501</width>
+             <height>361</height>
             </rect>
            </property>
-           <property name="font">
-            <font>
-             <pointsize>12</pointsize>
-            </font>
-           </property>
-           <property name="text">
-            <string>Комплектация 1</string>
-           </property>
-          </widget>
-          <widget class="QPushButton" name="pushButton_2">
-           <property name="geometry">
-            <rect>
-             <x>170</x>
-             <y>110</y>
-             <width>171</width>
-             <height>23</height>
-            </rect>
-           </property>
-           <property name="text">
-            <string>Изменить</string>
-           </property>
-          </widget>
-          <widget class="QPushButton" name="pushButton_3">
-           <property name="geometry">
-            <rect>
-             <x>360</x>
-             <y>110</y>
-             <width>171</width>
-             <height>23</height>
-            </rect>
-           </property>
-           <property name="text">
-            <string>Удалить</string>
-           </property>
-          </widget>
-          <widget class="QLabel" name="label_6">
-           <property name="geometry">
-            <rect>
-             <x>20</x>
-             <y>150</y>
-             <width>161</width>
-             <height>16</height>
-            </rect>
-           </property>
-           <property name="font">
-            <font>
-             <pointsize>12</pointsize>
-            </font>
-           </property>
-           <property name="text">
-            <string>Комплектация 2</string>
-           </property>
-          </widget>
-          <widget class="QPushButton" name="pushButton_4">
-           <property name="geometry">
-            <rect>
-             <x>360</x>
-             <y>150</y>
-             <width>171</width>
-             <height>23</height>
-            </rect>
-           </property>
-           <property name="text">
-            <string>Удалить</string>
-           </property>
-          </widget>
-          <widget class="QPushButton" name="pushButton_5">
-           <property name="geometry">
-            <rect>
-             <x>170</x>
-             <y>150</y>
-             <width>171</width>
-             <height>23</height>
-            </rect>
-           </property>
-           <property name="text">
-            <string>Изменить</string>
-           </property>
+           <layout class="QVBoxLayout" name="listVBoxHandler">
+            <item>
+             <layout class="QVBoxLayout" name="listVBox"/>
+            </item>
+            <item>
+             <spacer name="verticalSpacer">
+              <property name="orientation">
+               <enum>Qt::Vertical</enum>
+              </property>
+              <property name="sizeType">
+               <enum>QSizePolicy::Expanding</enum>
+              </property>
+              <property name="sizeHint" stdset="0">
+               <size>
+                <width>20</width>
+                <height>40</height>
+               </size>
+              </property>
+             </spacer>
+            </item>
+           </layout>
           </widget>
          </widget>
          <widget class="QWidget" name="editorPage">

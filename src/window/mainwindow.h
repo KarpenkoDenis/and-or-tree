@@ -9,11 +9,9 @@ namespace Ui {
 class MainWindow;
 }
 
-
 class MainWindow : public QMainWindow
 {
     Q_OBJECT
-    StateManager st;
 
 public:
     explicit MainWindow(QWidget *parent = nullptr);
@@ -22,9 +20,13 @@ public:
 private:
     Ui::MainWindow *ui;
     AddTreePopup *addTreePopup;
+    StateManager *stateManager;
+
+    void defineConnects();
 
 public slots:
-    void showForm();
+    void showAddTreePopup();
+    void addListLine(Tree tree);
 };
 
 #endif // MAINWINDOW_H
