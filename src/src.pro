@@ -25,25 +25,25 @@ DEFINES += QT_DEPRECATED_WARNINGS
 CONFIG += c++11
 
 SOURCES += \
-        Windows/form.cpp \
+        container/node.cpp \
+        container/statemanager.cpp \
+        container/tree.cpp \
+        container/treeiterator.cpp \
         main.cpp \
-        mainwindow.cpp \
-        node.cpp \
-        statemanager.cpp \
-        tree.cpp \
-        treeiterator.cpp
+        window/addtreepopup.cpp \
+        window/mainwindow.cpp
 
 HEADERS += \
-        Windows/form.h \
-        mainwindow.h \
-        node.h \
-        statemanager.h \
-        tree.h \
-        treeiterator.h
+        container/node.h \
+        container/statemanager.h \
+        container/tree.h \
+        container/treeiterator.h \
+        window/addtreepopup.h \
+        window/mainwindow.h
 
 FORMS += \
-        Windows/form.ui \
-        mainwindow.ui
+        window/addtreepopup.ui \
+        window/mainwindow.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin

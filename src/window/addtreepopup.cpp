@@ -1,21 +1,21 @@
-#include "form.h"
-#include "ui_form.h"
+#include "addtreepopup.h"
+#include "ui_addtreepopup.h"
 
 
-Form::Form(QWidget *parent) :
+AddTreePopup::AddTreePopup(QWidget *parent) :
     QWidget(parent),
-    ui(new Ui::Form)
+    ui(new Ui::AddTreePopup)
 {
     ui->setupUi(this);
     QObject::connect(ui->addButton,SIGNAL(clicked(bool)),this,SLOT(makeTree()));
 }
 
-Form::~Form()
+AddTreePopup::~AddTreePopup()
 {
     delete ui;
 }
 
-void Form::makeTree()
+void AddTreePopup::makeTree()
 {
     emit createTree( ui->textName->text());
 }

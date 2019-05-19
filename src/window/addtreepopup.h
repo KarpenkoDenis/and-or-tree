@@ -7,27 +7,25 @@
 
 
 namespace Ui {
-class Form;
+class AddTreePopup;
 }
 
-class Form : public QWidget
+class AddTreePopup : public QWidget
 {
     Q_OBJECT
 
 public:
-    explicit Form(QWidget *parent = 0);
-    ~Form();
-
+    explicit AddTreePopup(QWidget *parent = 0);
+    ~AddTreePopup();
 
 private:
-    Ui::Form *ui;
+    Ui::AddTreePopup *ui;
 
 public slots:
     void makeTree();
 
 signals:
     void createTree(QString name);
-
 };
 
 #endif // FORM_H

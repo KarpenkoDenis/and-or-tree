@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>Form</class>
- <widget class="QWidget" name="Form">
+ <class>AddTreePopup</class>
+ <widget class="QWidget" name="AddTreePopup">
   <property name="geometry">
    <rect>
     <x>0</x>
@@ -36,7 +36,7 @@
     </rect>
    </property>
   </widget>
-  <widget class="QWidget" name="">
+  <widget class="QWidget" name="layoutWidget">
    <property name="geometry">
     <rect>
      <x>50</x>
@@ -68,7 +68,7 @@
   <connection>
    <sender>pushButton</sender>
    <signal>clicked(bool)</signal>
-   <receiver>Form</receiver>
+   <receiver>AddTreePopup</receiver>
    <slot>close()</slot>
    <hints>
     <hint type="sourcelabel">
@@ -84,7 +84,7 @@
   <connection>
    <sender>pushButton</sender>
    <signal>clicked()</signal>
-   <receiver>Form</receiver>
+   <receiver>AddTreePopup</receiver>
    <slot>close()</slot>
    <hints>
     <hint type="sourcelabel">

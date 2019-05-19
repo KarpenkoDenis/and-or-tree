@@ -2,7 +2,7 @@
 #define STATEMANAGER_H
 #include <QObject>
 #include <QVector>
-#include <tree.h>
+#include "tree.h"
 
 class StateManager : public QObject
 {
@@ -13,7 +13,6 @@ private:
 
 public:
     explicit StateManager(QObject *parent = nullptr);
-
     QVector<Tree> getTrees() const;
 //    void addTree(Tree);
 

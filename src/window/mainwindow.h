@@ -2,8 +2,8 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
-#include "Windows/form.h"
-#include "statemanager.h"
+#include "addtreepopup.h"
+#include "container/statemanager.h"
 
 namespace Ui {
 class MainWindow;
@@ -21,12 +21,10 @@ public:
 
 private:
     Ui::MainWindow *ui;
-    Form *form;
+    AddTreePopup *addTreePopup;
 
 public slots:
     void showForm();
-
-
 };
 
 #endif // MAINWINDOW_H
