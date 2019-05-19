@@ -1,36 +1,40 @@
 #ifndef NODE_H
 #define NODE_H
 
-//#include <QObject>
 #include <iostream>
 #include <QString>
 #include <vector>
 
-enum  type {typeAnd = 1, typeOr = 2};
+enum  Type {And, Or};
 
 
 class Node
 {
-
-public:
-    Node();
-    Node(QString name, type t);
-    std::vector<Node> children;
-    type t;         // и/или
+    Type type;
     QString name;
     int id;
 
+public:
+    Node();
+    Node(QString name, Type type);
+    std::vector<Node> children;
 
-    void addNode( int parentID, QString name, type t);
+    void addNode( int parentID, QString name, Type type);
+    void addNode(QString name, Type type);
     void deleteNode(int id);
     int size();
-//    Node * find(QString name);
+    //    Node * find(QString name);
     Node * findKLP_last();
     Node * findKLP_next();
 
     bool operator==(const Node& ) const;
     bool operator<(const Node& ) const;
 
+    QString getName() const;
+    void setName(const QString &value);
+
+    int getId() const;
+    void setId(int value);
 };
 
 #endif // NODE_H

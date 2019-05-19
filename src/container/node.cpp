@@ -1,19 +1,40 @@
 #include "node.h"
 
+int Node::getId() const
+{
+    return id;
+}
+
+void Node::setId(int value)
+{
+    id = value;
+}
+
 Node::Node()
 {
-
+    
 }
 
-Node::Node(QString name, type t)
+Node::Node(QString name, Type type)
 {
-    this->name =name;
-    this->t=t;
+    this->name = name;
+    this->type = type;
 
 
 }
 
-void Node::addNode(int parentID, QString name, type t)
+
+void Node::setName(const QString &value)
+{
+    name = value;
+}
+
+QString Node::getName() const
+{
+    return name;
+}
+
+void Node::addNode(int parentID, QString name, Type t)
 {
     if(this->id == parentID)
     {
@@ -26,6 +47,11 @@ void Node::addNode(int parentID, QString name, type t)
         }
 
     }
+}
+
+void Node::addNode(QString name, Type t)
+{
+    children.push_back(Node(name, t));
 }
 
 void Node::deleteNode(int id)
@@ -49,7 +75,7 @@ int Node::size()
 {
     int count = 0;
     for(Node child : children) {
-      count = child.size();
+        count = child.size();
     }
     return 1 + count;
 }

@@ -352,7 +352,7 @@
              <height>651</height>
             </rect>
            </property>
-           <layout class="QVBoxLayout" name="verticalLayout"/>
+           <layout class="QVBoxLayout" name="editorLayout"/>
           </widget>
           <widget class="QLabel" name="label">
            <property name="geometry">
@@ -365,19 +365,6 @@
            </property>
            <property name="text">
             <string>Здесь дерево</string>
-           </property>
-          </widget>
-          <widget class="QLabel" name="label_2">
-           <property name="geometry">
-            <rect>
-             <x>60</x>
-             <y>270</y>
-             <width>191</width>
-             <height>21</height>
-            </rect>
-           </property>
-           <property name="text">
-            <string>Здесь редактор конкретного узла</string>
            </property>
           </widget>
          </widget>

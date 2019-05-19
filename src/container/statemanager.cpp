@@ -4,7 +4,6 @@
 
 StateManager::StateManager(QObject *parent) : QObject(parent)
 {
-    //    trees.append(Tree());
 }
 
 QVector<Tree> StateManager::getTrees() const

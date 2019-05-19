@@ -2,7 +2,6 @@
 #define FORM_H
 
 #include <QWidget>
-#include <QCloseEvent>
 #include <QDebug>
 
 
@@ -15,11 +14,11 @@ class AddTreePopup : public QWidget
     Q_OBJECT
 
 public:
-    explicit AddTreePopup(QWidget *parent = 0);
+    explicit AddTreePopup(QWidget *parent = nullptr);
     ~AddTreePopup();
 
 private:
-    Ui::AddTreePopup *ui;
+    Ui::AddTreePopup *ui = nullptr;
 
 public slots:
     void makeTree();

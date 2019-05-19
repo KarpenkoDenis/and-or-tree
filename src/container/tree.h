@@ -13,10 +13,10 @@ class Tree
 {
 public:
     Tree();
-    Node parent;
+    Node root;
     QString name;
 
-    void addNode( int parentID, QString name, type t);
+    void addNode( int parentID, QString name, Type t);
     void deleteNode( int id);
     void clear();
     int size();
@@ -43,6 +43,7 @@ public:
     void setName(const QString &value);
 
     QString getName() const;
+    Node getRoot() const;
 };
 
 #endif // TREE_H

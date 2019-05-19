@@ -31,6 +31,7 @@ SOURCES += \
         container/treeiterator.cpp \
         main.cpp \
         widget/listlinewidget.cpp \
+        widget/nodeeditor.cpp \
         window/addtreepopup.cpp \
         window/mainwindow.cpp
 
@@ -40,6 +41,7 @@ HEADERS += \
         container/tree.h \
         container/treeiterator.h \
         widget/listlinewidget.h \
+        widget/nodeeditor.h \
         window/addtreepopup.h \
         window/mainwindow.h
 

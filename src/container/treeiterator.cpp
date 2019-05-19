@@ -59,7 +59,7 @@ TreeIterator &TreeIterator::operator++()
         c = save;
     }
     else {
-         c = findNext(&(r->parent), *c);
+         c = findNext(&(r->root), *c);
 
     }
 

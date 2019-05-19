@@ -7,7 +7,7 @@ AddTreePopup::AddTreePopup(QWidget *parent) :
     ui(new Ui::AddTreePopup)
 {
     ui->setupUi(this);
-    QObject::connect(ui->addButton,SIGNAL(clicked(bool)),this,SLOT(makeTree()));
+    QObject::connect(ui->addButton, SIGNAL(clicked(bool)), this, SLOT(makeTree()));
 }
 
 AddTreePopup::~AddTreePopup()
@@ -21,6 +21,8 @@ void AddTreePopup::makeTree()
 
     if (treeName.length() > 0){
         emit createTree(treeName);
+
+        ui->treeNameLineEdit->clear();
         close();
     }
 }

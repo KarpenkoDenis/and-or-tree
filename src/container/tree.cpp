@@ -2,7 +2,12 @@
 
 Tree::Tree()
 {
+    this->root.setName("Корневой узел");
+}
 
+Node Tree::getRoot() const
+{
+    return root;
 }
 
 QString Tree::getName() const
@@ -15,29 +20,26 @@ void Tree::setName(const QString &value)
     name = value;
 }
 
-void Tree::addNode(int parentID, QString name, type t)
+void Tree::addNode(int parentID, QString name, Type type)
 {
-    parent.addNode(parentID, name, t);
-
+    root.addNode(parentID, name, type);
 }
 
 void Tree::deleteNode(int id)
 {
-    if(id == parent.id)
+    if(id == root.getId())
         this->clear();
-    parent.deleteNode(id);
+    root.deleteNode(id);
 }
 
 void Tree::clear()
 {
-    parent = Node();
-
+    root = Node();
 }
 
 int Tree::size()
 {
-    return parent.size();
-
+    return root.size();
 }
 
 Node *Tree::findKLP_next_by(Node * el)
@@ -61,7 +63,7 @@ Node *Tree::findKLP_next_by(Node * el)
 
 Tree::iterator Tree::begin()
 {
-    return TreeIterator(this, &parent);
+    return TreeIterator(this, &root);
 //    return iterator(data.get());
 }
 
