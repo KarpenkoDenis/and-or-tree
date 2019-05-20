@@ -3,6 +3,7 @@
 #include "ui_mainwindow.h"
 #include "widget/listlinewidget.h"
 #include <QDebug>
+#include "widget/searchcriteriawidget.h"
 
 
 MainWindow::MainWindow(QWidget *parent) :
@@ -38,6 +39,12 @@ void MainWindow::openEditor(Tree *tree)
     nodeEditor->configure(&(tree->root));
 }
 
+void MainWindow::addSearchCriteria()
+{
+    ui->searchCriteriaVBox->addWidget(new SearchCriteriaWidget());
+}
+
+
 void MainWindow::initializeUi(){
     ui->setupUi(this);
 
@@ -49,6 +56,7 @@ void MainWindow::defineConnects(){
     // main window
     QObject::connect(ui->addButton, SIGNAL(clicked(bool)), this, SLOT(showAddTreePopup()));
     QObject::connect(stateManager, SIGNAL(treeCreated(Tree)), this, SLOT(addListLine(Tree)));
+    QObject::connect(ui->addSearchCriteriaButton, SIGNAL(clicked(bool)), this, SLOT(addSearchCriteria()));
 
     // add tree popup
     QObject::connect(addTreePopup, SIGNAL(createTree(QString)), stateManager, SLOT(createTree(QString)));
