@@ -32,6 +32,7 @@ SOURCES += \
         main.cpp \
         widget/listlinewidget.cpp \
         widget/nodeeditor.cpp \
+        widget/searchcriteriawidget.cpp \
         window/addtreepopup.cpp \
         window/mainwindow.cpp
 
@@ -42,6 +43,7 @@ HEADERS += \
         container/treeiterator.h \
         widget/listlinewidget.h \
         widget/nodeeditor.h \
+        widget/searchcriteriawidget.h \
         window/addtreepopup.h \
         window/mainwindow.h
 
