@@ -63,3 +63,27 @@ Type CantFindValidParentException::getType()
 {
     return type;
 }
+
+CantFindNodeToDeleteException::CantFindNodeToDeleteException() :
+    TreeException(),
+    id(0)
+{
+}
+
+CantFindNodeToDeleteException::CantFindNodeToDeleteException(QString functionName, int id) :
+    TreeException(functionName),
+    id(id)
+{
+}
+
+QString CantFindNodeToDeleteException::what()
+{
+    return TreeException::what()
+            + " Can't find node with ID = " + QString::number(id)
+            + " to delete.";
+}
+
+int CantFindNodeToDeleteException::getId()
+{
+    return id;
+}

@@ -70,19 +70,29 @@ void Node::addNode(QString name, Type t)
 
 void Node::deleteNode(int id)
 {
-    for (auto child = this->children.begin(); child != this->children.end();)
+    if(!deleteNodeRec(id))
+    {
+        throw CantFindNodeToDeleteException("Node::deleteNode", id);
+    }
+}
+
+bool Node::deleteNodeRec(int id)
+{
+    for (auto child = this->children.begin(); child != this->children.end(); child++)
     {
         if(child->id == id)
         {
-            children.clear();
             this->children.erase(child);
-            return;
+            return true;
         }
         else {
-            child->deleteNode(id);
+            if(child->deleteNodeRec(id))
+            {
+                return true;
+            }
         }
-
     }
+    return false;
 }
 
 qint32 Node::size()
@@ -164,7 +174,7 @@ QDataStream& operator>>(QDataStream& is, Node& node)
        >> node.name
        >> type
        >> childrenCount;
-    for(int i = 0; i < childrenCount; i++)
+    for(unsigned int i = 0; i < childrenCount; i++)
     {
         Node child;
         is >> child;

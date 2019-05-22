@@ -35,7 +35,14 @@ void Tree::deleteNode(int id)
 {
     if(id == root.getId())
         this->clear();
-    root.deleteNode(id);
+    try
+    {
+        root.deleteNode(id);
+    }
+    catch(CantFindNodeToDeleteException e)
+    {
+        QMessageBox::critical(nullptr, "Error", e.what(), QMessageBox::Ok);
+    }
 }
 
 void Tree::clear()

@@ -17,8 +17,6 @@ class Node
     Type type;
     QString name;
     qint32 id;
-private:
-    bool addNodeRec( int parentID, QString name, Type type);
 
 public:
     Node();
@@ -44,6 +42,10 @@ public:
 
     friend QDataStream& operator<<(QDataStream& os, const Node& node);
     friend QDataStream& operator>>(QDataStream& is, Node& node);
+
+private:
+    bool addNodeRec(int parentID, QString name, Type type);
+    bool deleteNodeRec(int id);
 };
 
 #endif // NODE_H

@@ -33,4 +33,15 @@ private:
     Type type;
 };
 
+class CantFindNodeToDeleteException : public TreeException
+{
+public:
+    CantFindNodeToDeleteException();
+    CantFindNodeToDeleteException(QString functionName, int id);
+    QString what() override;
+    int getId();
+private:
+    int id;
+};
+
 #endif // TREEEXCEPTION_H
