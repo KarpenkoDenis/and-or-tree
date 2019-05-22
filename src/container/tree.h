@@ -4,6 +4,7 @@
 #include <QObject>
 #include "node.h"
 #include "memory"
+#include "treeexception.h"
 
 class TreeIterator;
 

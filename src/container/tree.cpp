@@ -1,4 +1,5 @@
 #include "tree.h"
+#include <QMessageBox>
 
 Tree::Tree()
 {
@@ -21,8 +22,13 @@ void Tree::setName(const QString &value)
 }
 
 void Tree::addNode(int parentID, QString name, Type type)
+try
 {
     root.addNode(parentID, name, type);
+}
+catch(CantFindValidParentException e)
+{
+    QMessageBox::critical(nullptr, "Error", e.what(), QMessageBox::Ok);
 }
 
 void Tree::deleteNode(int id)

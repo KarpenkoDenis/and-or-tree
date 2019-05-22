@@ -7,12 +7,18 @@
 
 enum  Type {And, Or};
 
+inline QString getFriendlyName(Type type)
+{
+    return (type == Type::And) ? "And" : "Or";
+}
 
 class Node
 {
     Type type;
     QString name;
     qint32 id;
+private:
+    bool addNodeRec( int parentID, QString name, Type type);
 
 public:
     Node();
