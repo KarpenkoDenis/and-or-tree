@@ -26,7 +26,7 @@ try
 {
     root.addNode(parentID, name, type);
 }
-catch(CantFindValidParentException e)
+catch(TreeException& e)
 {
     QMessageBox::critical(nullptr, "Error", e.what(), QMessageBox::Ok);
 }
@@ -39,7 +39,7 @@ void Tree::deleteNode(int id)
     {
         root.deleteNode(id);
     }
-    catch(CantFindNodeToDeleteException e)
+    catch(TreeException& e)
     {
         QMessageBox::critical(nullptr, "Error", e.what(), QMessageBox::Ok);
     }
