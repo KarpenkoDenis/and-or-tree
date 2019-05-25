@@ -37,7 +37,7 @@ void Tree::clear()
     root = Node();
 }
 
-int Tree::size()
+qint32 Tree::size()
 {
     return root.size();
 }
@@ -81,3 +81,17 @@ Tree::iterator Tree::end()
 //{
 //    return const_iterator(data.get() + size);
 //}
+
+QDataStream& operator<<(QDataStream& os, const Tree& tree)
+{
+    os << tree.name;
+    os << tree.root;
+    return os;
+}
+
+QDataStream& operator>>(QDataStream& is, Tree& tree)
+{
+    is >> tree.name;
+    is >> tree.root;
+    return is;
+}

@@ -44,6 +44,9 @@ public:
 
     QString getName() const;
     Node getRoot() const;
+
+    friend QDataStream& operator<<(QDataStream& os, const Tree& tree);
+    friend QDataStream& operator>>(QDataStream& is, Tree& tree);
 };
 
 #endif // TREE_H

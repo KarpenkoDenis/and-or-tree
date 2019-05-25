@@ -1,11 +1,13 @@
 #include "node.h"
+#include <QDebug>
+#include <QDataStream>
 
-int Node::getId() const
+qint32 Node::getId() const
 {
     return id;
 }
 
-void Node::setId(int value)
+void Node::setId(qint32 value)
 {
     id = value;
 }
@@ -81,9 +83,9 @@ void Node::deleteNode(int id)
     }
 }
 
-int Node::size()
+qint32 Node::size()
 {
-    int count = 0;
+    qint32 count = 0;
     for(Node child : children) {
         count = child.size();
     }
@@ -133,4 +135,43 @@ bool Node::operator==(const Node &right) const
 bool Node::operator<(const Node &right) const
 {
     return (this->name < right.name);
+}
+
+QDataStream& operator<<(QDataStream& os, const Node& node)
+{
+    qDebug() << "store Node" << node.id
+             << node.name
+             << static_cast<qint32>(node.type)
+             << node.children.size();
+    os << node.id
+       << node.name
+       << static_cast<qint32>(node.type)
+       << node.children.size();
+    for(auto child : node.children)
+    {
+        os << child;
+    }
+    return os;
+}
+
+QDataStream& operator>>(QDataStream& is, Node& node)
+{
+    qint32 type;
+    size_t childrenCount;
+    is >> node.id
+       >> node.name
+       >> type
+       >> childrenCount;
+    for(int i = 0; i < childrenCount; i++)
+    {
+        Node child;
+        is >> child;
+        node.children.push_back(child);
+    }
+    node.type = static_cast<Type>(type);
+    qDebug() << "restore Node" << node.id
+             << node.name
+             << static_cast<qint32>(node.type)
+             << node.children.size();
+    return is;
 }
