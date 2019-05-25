@@ -38,6 +38,7 @@ SOURCES += \
         window/mainwindow.cpp
 
 HEADERS += \
+        container/allocator.h \
         container/node.h \
         container/statemanager.h \
         container/tree.h \
