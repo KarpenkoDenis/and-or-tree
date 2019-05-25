@@ -30,6 +30,7 @@ SOURCES += \
         container/tree.cpp \
         container/treeiterator.cpp \
         main.cpp \
+        search.cpp \
         widget/listlinewidget.cpp \
         widget/nodeeditor.cpp \
         window/addtreepopup.cpp \

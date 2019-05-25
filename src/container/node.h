@@ -23,6 +23,9 @@ public:
     void addNode(QString name, Type type);
     void deleteNode(int id);
     int size();
+
+    bool findChildByName(const QString &name) const;
+
     //    Node * find(QString name);
     Node * findKLP_last();
     Node * findKLP_next();
@@ -35,6 +38,7 @@ public:
 
     int getId() const;
     void setId(int value);
+
 };
 
 #endif // NODE_H
