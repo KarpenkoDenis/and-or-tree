@@ -8,6 +8,11 @@
 #include <QPushButton>
 #include <QVBoxLayout>
 #include <QComboBox>
+#include <QGraphicsScene>
+#include <QtCore>
+#include <QtGui>
+
+
 
 class NodeEditor : public QWidget
 {
@@ -33,6 +38,7 @@ signals:
 public slots:
     void handleAddChildNodeButtonClick();
     void handleSaveNodeButtonClick();
+
 };
 
 #endif // NODEEDITOR_H

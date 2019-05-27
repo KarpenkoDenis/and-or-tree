@@ -127,7 +127,7 @@ bool Node::operator<(const Node &right) const
     return (this->name < right.name);
 }
 
-QDataStream& operator<<(QDataStream& os, const Node& node)
+QDataStream& operator<<(QDataStream & os, const Node& node)
 {
     qDebug() << "store Node" << node.id
              << node.name
@@ -135,8 +135,8 @@ QDataStream& operator<<(QDataStream& os, const Node& node)
              << node.children.size();
     os << node.id
        << node.name
-       << static_cast<qint32>(node.type)
-       << node.children.size();
+       << static_cast<qint32>(node.type);
+       //<< node.children.size();
     for(auto child : node.children)
     {
         os << child;
@@ -150,8 +150,8 @@ QDataStream& operator>>(QDataStream& is, Node& node)
     size_t childrenCount;
     is >> node.id
        >> node.name
-       >> type
-       >> childrenCount;
+       >> type;
+   //    >> childrenCount;
     for(int i = 0; i < childrenCount; i++)
     {
         Node child;

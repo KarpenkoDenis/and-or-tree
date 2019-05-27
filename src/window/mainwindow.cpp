@@ -4,6 +4,7 @@
 #include "widget/listlinewidget.h"
 #include <QDebug>
 #include "widget/searchcriteriawidget.h"
+#include "widget/graphwidget.h"
 
 
 MainWindow::MainWindow(QWidget *parent) :
@@ -16,6 +17,7 @@ MainWindow::MainWindow(QWidget *parent) :
     defineConnects();
     // We can restore the trees only after the signals/slots are initialized
     stateManager->restoreTrees();
+
 }
 
 MainWindow::~MainWindow()
@@ -24,6 +26,7 @@ MainWindow::~MainWindow()
     delete addTreePopup;
     delete nodeEditor;
     delete stateManager;
+    delete nodeTreeGraph;
 }
 
 void MainWindow::showAddTreePopup()
@@ -52,7 +55,15 @@ void MainWindow::initializeUi(){
 
     nodeEditor = new NodeEditor();
     ui->editorLayout->addWidget(nodeEditor);
+
+    nodeTreeGraph = new NodeTreeGraph();
+    graphWidget = new GraphWidget();
+
+    ui->graphicsView->setScene(graphWidget->scene());
+    stateManager->getTrees();
 }
+
+
 
 void MainWindow::defineConnects(){
     // main window
@@ -62,4 +73,7 @@ void MainWindow::defineConnects(){
 
     // add tree popup
     QObject::connect(addTreePopup, SIGNAL(createTree(QString)), stateManager, SLOT(createTree(QString)));
+
 }
+
+

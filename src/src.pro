@@ -30,9 +30,13 @@ SOURCES += \
         container/tree.cpp \
         container/treeiterator.cpp \
         main.cpp \
+        widget/edge.cpp \
+        widget/graphwidget.cpp \
         widget/listlinewidget.cpp \
         widget/nodeeditor.cpp \
+        widget/nodetreegraph.cpp \
         widget/searchcriteriawidget.cpp \
+        widget/treenode.cpp \
         window/addtreepopup.cpp \
         window/mainwindow.cpp
 
@@ -41,9 +45,13 @@ HEADERS += \
         container/statemanager.h \
         container/tree.h \
         container/treeiterator.h \
+        widget/edge.h \
+        widget/graphwidget.h \
         widget/listlinewidget.h \
         widget/nodeeditor.h \
+        widget/nodetreegraph.h \
         widget/searchcriteriawidget.h \
+        widget/treenode.h \
         window/addtreepopup.h \
         window/mainwindow.h
 

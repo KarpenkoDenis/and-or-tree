@@ -48,6 +48,7 @@ void NodeEditor::initializeLayout()
     addChildNodeButton = new QPushButton("Добавить дочерний узел");
     saveNodeButton = new QPushButton("Сохранить узел");
 
+
     auto layout = new QVBoxLayout();
 
     layout->addWidget(new QLabel("Редакторовать узел"));
@@ -56,6 +57,7 @@ void NodeEditor::initializeLayout()
     layout->addWidget(addChildNodeButton);
     layout->addWidget(saveNodeButton);
     layout->addStretch(1);
+
 
     this->setLayout(layout);
 }
