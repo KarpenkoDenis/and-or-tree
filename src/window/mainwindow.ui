@@ -30,7 +30,7 @@
      </size>
     </property>
     <property name="currentIndex">
-     <number>0</number>
+     <number>1</number>
     </property>
     <widget class="QWidget" name="userTab">
      <attribute name="title">
@@ -295,17 +295,14 @@
            </property>
            <layout class="QVBoxLayout" name="editorLayout"/>
           </widget>
-          <widget class="QLabel" name="label">
+          <widget class="QGraphicsView" name="graphicsView">
            <property name="geometry">
             <rect>
-             <x>600</x>
-             <y>290</y>
-             <width>171</width>
-             <height>21</height>
+             <x>310</x>
+             <y>10</y>
+             <width>741</width>
+             <height>631</height>
             </rect>
-           </property>
-           <property name="text">
-            <string>Здесь дерево</string>
            </property>
           </widget>
          </widget>

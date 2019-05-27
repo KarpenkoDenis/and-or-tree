@@ -16,7 +16,6 @@ class NodeEditor : public QWidget
 public:
     explicit NodeEditor(QWidget *parent = nullptr);
     ~NodeEditor();
-    void configure(Node *node);
 
 private:
     Node *currentNode = nullptr;
@@ -33,6 +32,7 @@ signals:
 public slots:
     void handleAddChildNodeButtonClick();
     void handleSaveNodeButtonClick();
+    void configure(Node *node);
 };
 
 #endif // NODEEDITOR_H

@@ -38,7 +38,7 @@ void MainWindow::addListLine(Tree tree){
 void MainWindow::openEditor(Tree *tree)
 {
     ui->stackedWidget->setCurrentIndex(1);
-    nodeEditor->configure(&(tree->root));
+    graphWidget->configure(tree);
 }
 
 void MainWindow::addSearchCriteria()
@@ -52,6 +52,11 @@ void MainWindow::initializeUi(){
 
     nodeEditor = new NodeEditor();
     ui->editorLayout->addWidget(nodeEditor);
+
+    nodeTreeGraph = new NodeTreeGraph();
+    graphWidget = new GraphWidget();
+
+    ui->graphicsView->setScene(graphWidget->scene());
 }
 
 void MainWindow::defineConnects(){
@@ -62,4 +67,5 @@ void MainWindow::defineConnects(){
 
     // add tree popup
     QObject::connect(addTreePopup, SIGNAL(createTree(QString)), stateManager, SLOT(createTree(QString)));
+    QObject::connect(graphWidget, SIGNAL(nodeClicked(Node*)), nodeEditor, SLOT(configure(Node*)));
 }

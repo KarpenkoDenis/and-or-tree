@@ -5,6 +5,8 @@
 #include "addtreepopup.h"
 #include "container/statemanager.h"
 #include "widget/nodeeditor.h"
+#include "widget/graphwidget.h"
+#include "widget/nodetreegraph.h"
 
 namespace Ui {
 class MainWindow;
@@ -23,6 +25,9 @@ private:
     AddTreePopup *addTreePopup = nullptr;
     StateManager *stateManager = nullptr;
     NodeEditor *nodeEditor = nullptr;
+
+    GraphWidget *graphWidget = nullptr;
+    NodeTreeGraph *nodeTreeGraph = nullptr;
 
     void defineConnects();
     void initializeUi();
