@@ -1,4 +1,5 @@
 #include "node.h"
+#include "treeexception.h"
 #include <QDebug>
 #include <QDataStream>
 
@@ -31,8 +32,6 @@ Node::Node(QString name, Type type)
 {
     this->name = name;
     this->type = type;
-
-
 }
 
 
@@ -46,19 +45,32 @@ QString Node::getName() const
     return name;
 }
 
+
 void Node::addNode(int parentID, QString name, Type t)
+{
+    if(!addNodeRec(parentID, name, t))
+    {
+        throw CantFindValidParentException("Node::addNode", parentID, name, t);
+    }
+}
+bool Node::addNodeRec(int parentID, QString name, Type t)
 {
     if(this->id == parentID)
     {
         children.push_back(Node(name, t));
+        return true;
     }else
     {
         foreach (Node child, this->children)
         {
-            child.addNode(parentID, name, t);
+            if(child.addNodeRec(parentID, name, t))
+            {
+                return true;
+            }
         }
 
     }
+    return false;
 }
 
 void Node::addNode(QString name, Type t)
@@ -68,19 +80,29 @@ void Node::addNode(QString name, Type t)
 
 void Node::deleteNode(int id)
 {
-    for (auto child = this->children.begin(); child != this->children.end();)
+    if(!deleteNodeRec(id))
+    {
+        throw CantFindNodeToDeleteException("Node::deleteNode", id);
+    }
+}
+
+bool Node::deleteNodeRec(int id)
+{
+    for (auto child = this->children.begin(); child != this->children.end(); child++)
     {
         if(child->id == id)
         {
-            children.clear();
             this->children.erase(child);
-            return;
+            return true;
         }
         else {
-            child->deleteNode(id);
+            if(child->deleteNodeRec(id))
+            {
+                return true;
+            }
         }
-
     }
+    return false;
 }
 
 qint32 Node::size()
@@ -141,7 +163,7 @@ QDataStream& operator<<(QDataStream& os, const Node& node)
 {
     qDebug() << "store Node" << node.id
              << node.name
-             << static_cast<qint32>(node.type)
+             << getFriendlyName(node.type)
              << node.children.size();
     os << node.id
        << node.name
@@ -162,7 +184,7 @@ QDataStream& operator>>(QDataStream& is, Node& node)
        >> node.name
        >> type
        >> childrenCount;
-    for(int i = 0; i < childrenCount; i++)
+    for(unsigned int i = 0; i < childrenCount; i++)
     {
         Node child;
         is >> child;
@@ -171,7 +193,7 @@ QDataStream& operator>>(QDataStream& is, Node& node)
     node.type = static_cast<Type>(type);
     qDebug() << "restore Node" << node.id
              << node.name
-             << static_cast<qint32>(node.type)
+             << getFriendlyName(node.type)
              << node.children.size();
     return is;
 }

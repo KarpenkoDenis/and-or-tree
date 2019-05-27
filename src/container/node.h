@@ -7,6 +7,10 @@
 
 enum  Type {And, Or};
 
+inline QString getFriendlyName(Type type)
+{
+    return (type == Type::And) ? "And" : "Or";
+}
 
 class Node
 {
@@ -43,6 +47,9 @@ public:
     friend QDataStream& operator<<(QDataStream& os, const Node& node);
     friend QDataStream& operator>>(QDataStream& is, Node& node);
 
+private:
+    bool addNodeRec(int parentID, QString name, Type type);
+    bool deleteNodeRec(int id);
 };
 
 #endif // NODE_H
