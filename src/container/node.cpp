@@ -13,6 +13,16 @@ void Node::setId(qint32 value)
     id = value;
 }
 
+bool Node::findChildByName(const QString &name) const
+{
+    for(auto child: children)
+    {
+        if(child.getName() == name)
+            return true;
+    }
+    return false;
+}
+
 Node::Node()
 {
     

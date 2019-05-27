@@ -31,6 +31,7 @@ SOURCES += \
         container/treeiterator.cpp \
         container/treeexception.cpp \
         main.cpp \
+        search.cpp \
         widget/listlinewidget.cpp \
         widget/nodeeditor.cpp \
         widget/searchcriteriawidget.cpp \
@@ -38,6 +39,7 @@ SOURCES += \
         window/mainwindow.cpp
 
 HEADERS += \
+        container/allocator.h \
         container/node.h \
         container/statemanager.h \
         container/tree.h \
