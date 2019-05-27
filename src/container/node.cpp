@@ -23,6 +23,16 @@ bool Node::findChildByName(const QString &name) const
     return false;
 }
 
+Type Node::getType() const
+{
+    return type;
+}
+
+void Node::setType(const Type &value)
+{
+    type = value;
+}
+
 Node::Node()
 {
     

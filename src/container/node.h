@@ -47,6 +47,9 @@ public:
     friend QDataStream& operator<<(QDataStream& os, const Node& node);
     friend QDataStream& operator>>(QDataStream& is, Node& node);
 
+    Type getType() const;
+    void setType(const Type &value);
+
 private:
     bool addNodeRec(int parentID, QString name, Type type);
     bool deleteNodeRec(int id);
