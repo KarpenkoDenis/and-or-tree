@@ -64,6 +64,14 @@ void Node::addNode(int parentID, QString name, Type t)
         throw CantFindValidParentException("Node::addNode", parentID, name, t);
     }
 }
+
+void Node::addNode(QString parentName, QString name, Type type)
+{
+    if(!addNodeRec(parentName, name, type))
+    {
+        throw CantFindValidParentException("Node::addNode", parentName, name, type);
+    }
+}
 bool Node::addNodeRec(int parentID, QString name, Type t)
 {
     if(this->id == parentID)
@@ -72,14 +80,31 @@ bool Node::addNodeRec(int parentID, QString name, Type t)
         return true;
     }else
     {
-        foreach (Node child, this->children)
+        for(auto iter = this->children.begin(); iter!=this->children.end(); ++iter)
         {
-            if(child.addNodeRec(parentID, name, t))
+            if((*iter).addNodeRec(parentID, name, t))
             {
                 return true;
             }
         }
-
+    }
+    return false;
+}
+bool Node::addNodeRec(QString parentName, QString name, Type t)
+{
+    if(this->name == parentName)
+    {
+        children.push_back(Node(name, t));
+        return true;
+    }else
+    {
+        for(auto iter = this->children.begin(); iter!=this->children.end(); ++iter)
+        {
+            if((*iter).addNodeRec(parentName, name, t))
+            {
+                return true;
+            }
+        }
     }
     return false;
 }

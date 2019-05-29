@@ -24,6 +24,7 @@ public:
     std::vector<Node> children;
 
     void addNode( int parentID, QString name, Type type);
+    void addNode( QString parentName, QString name, Type type);
     void addNode(QString name, Type type);
     void deleteNode(int id);
     int size();
@@ -52,6 +53,7 @@ public:
 
 private:
     bool addNodeRec(int parentID, QString name, Type type);
+    bool addNodeRec(QString parentName, QString name, Type t);
     bool deleteNodeRec(int id);
 };
 

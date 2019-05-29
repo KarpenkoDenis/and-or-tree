@@ -36,7 +36,7 @@ QMap<QString, QVector<QString>> findProperties(QVector<Tree> trees)
     QMap<QString, QVector<QString>> resultProperties;
     for(auto tree : trees)
     {
-        for(auto iter = tree.begin(); iter!=tree.end(); ++iter)
+        for(TreeIterator iter = tree.begin(); iter!=tree.end(); ++iter)
         {
             if((*iter).getType() == Or)
             {

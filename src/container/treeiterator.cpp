@@ -41,11 +41,18 @@ inline Node *  findNext(Node * n, Node finding)
         return n;
     }
 
-    for(auto c: n->children)
+    unsigned i =0;
+    for(Node c: n->children)
     {
+        if(c == finding)
+        {
+            if(i+1 < n->children.size())
+                return  &n->children.at(i+1);
+        }
         auto save = findNext(&c, finding);
         if(save != nullptr)
             return save;
+        i++;
     }
     last = n;
     return nullptr;
@@ -60,7 +67,6 @@ TreeIterator &TreeIterator::operator++()
     }
     else {
          c = findNext(&(r->root), *c);
-
     }
 
     return *this;

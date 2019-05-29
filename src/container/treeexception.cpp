@@ -41,6 +41,15 @@ CantFindValidParentException::CantFindValidParentException(QString functionName,
 {
 }
 
+CantFindValidParentException::CantFindValidParentException(QString functionName, QString parentName, QString name, Type type):
+    TreeException(functionName),
+    parentName(parentName),
+    name(name),
+    type(type)
+{
+
+}
+
 QString CantFindValidParentException::what()
 {
     return TreeException::what()

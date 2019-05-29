@@ -23,12 +23,14 @@ class CantFindValidParentException : public TreeException
 public:
     CantFindValidParentException();
     CantFindValidParentException(QString functionName, int parentID, QString name, Type type);
+    CantFindValidParentException(QString functionName, QString parentName, QString name, Type type);
     QString what() override;
     int getParentID();
     QString getName();
     Type getType();
 private:
     int parentID;
+    QString parentName;
     QString name;
     Type type;
 };
