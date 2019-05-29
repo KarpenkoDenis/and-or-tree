@@ -13,15 +13,22 @@ QVector<int> findTrees(QVector<Tree> trees, QMap<QString, QString> properties)
     {
         for(auto iter = tree.begin(); iter!=tree.end(); ++iter)
         {
+            bool goodTree = true;
             foreach (QString key, properties.keys())
             {
-
               QString childName=properties.value(key);
               if((*iter).getName() == key)
               {
-                  if((*iter).findChildByName(childName))
-                  resultTrees.append(currNum);
+                  if(!(*iter).findChildByName(childName))
+                  {
+                    goodTree = false;
+                    break;
+                  }
               }
+            }
+            if(goodTree)
+            {
+                resultTrees.append(currNum);
             }
         }
         currNum++;
