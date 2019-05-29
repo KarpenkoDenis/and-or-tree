@@ -38,6 +38,7 @@ public slots:
     void addListLine(Tree tree);
     void openEditor(Tree *tree);
     void addSearchCriteria();
+    void searchForCriteria();
 };
 
 #endif // MAINWINDOW_H

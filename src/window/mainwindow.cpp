@@ -46,6 +46,12 @@ void MainWindow::addSearchCriteria()
     ui->searchCriteriaVBox->addWidget(new SearchCriteriaWidget(this));
 }
 
+void MainWindow::searchForCriteria()
+{
+    ui->listVBox->children();
+    //loop and get selected criteria from each via getCriteria
+}
+
 
 void MainWindow::initializeUi(){
     ui->setupUi(this);
@@ -64,6 +70,8 @@ void MainWindow::defineConnects(){
     QObject::connect(ui->addButton, SIGNAL(clicked(bool)), this, SLOT(showAddTreePopup()));
     QObject::connect(stateManager, SIGNAL(treeCreated(Tree)), this, SLOT(addListLine(Tree)));
     QObject::connect(ui->addSearchCriteriaButton, SIGNAL(clicked(bool)), this, SLOT(addSearchCriteria()));
+
+    QObject::connect(ui->searchButton, SIGNAL(clicked(bool)), this, SLOT(searchForCriteria()));
 
     // add tree popup
     QObject::connect(addTreePopup, SIGNAL(createTree(QString)), stateManager, SLOT(createTree(QString)));

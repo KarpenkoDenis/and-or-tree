@@ -13,6 +13,8 @@ public:
     explicit SearchCriteriaWidget(MainWindow *mainWindow, QWidget *parent = nullptr);
     ~SearchCriteriaWidget();
 
+    QPair<QString, QString> getCriteria();
+
 private:
     QComboBox *searchCriteriaTypeComboBox = nullptr;
     QComboBox *searchCriteriaValueComboBox = nullptr;
@@ -23,7 +25,9 @@ private:
 
 signals:
 
+
 public slots:
+    void handleSearchCriteriaTypeSelect(QString);
 };
 
 #endif // SEARCHCRITERIAWIDGET_H
