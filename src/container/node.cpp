@@ -42,6 +42,7 @@ Node::Node(QString name, Type type)
 {
     this->name = name;
     this->type = type;
+
 }
 
 
@@ -161,6 +162,8 @@ Node * Node::findKLP_next()
 
 bool Node::operator==(const Node &right) const
 {
+    if(!this)
+        return false;
     return (this->name == right.name);
 }
 

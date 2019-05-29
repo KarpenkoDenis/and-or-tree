@@ -49,6 +49,7 @@ HEADERS += \
         container/tree.h \
         container/treeiterator.h \
         container/treeexception.h \
+        search.h \
         widget/edge.h \
         widget/graphwidget.h \
         widget/listlinewidget.h \

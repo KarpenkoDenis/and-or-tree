@@ -43,7 +43,7 @@ void MainWindow::openEditor(Tree *tree)
 
 void MainWindow::addSearchCriteria()
 {
-    ui->searchCriteriaVBox->addWidget(new SearchCriteriaWidget());
+    ui->searchCriteriaVBox->addWidget(new SearchCriteriaWidget(this));
 }
 
 

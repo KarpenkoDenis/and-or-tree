@@ -3,7 +3,8 @@
 
 Tree::Tree()
 {
-    this->root.setName("Корневой узел");
+    this->root.setName("Авто");
+    this->root.setType(And);
 }
 
 Node Tree::getRoot() const

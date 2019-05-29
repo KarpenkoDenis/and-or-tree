@@ -1,9 +1,4 @@
-#include "container/node.h"
-#include "container/tree.h"
-#include "container/treeiterator.h"
-
-#include <QVector>
-#include <QMap>
+#include "search.h"
 
 QVector<int> findTrees(QVector<Tree> trees, QMap<QString, QString> properties)
 {

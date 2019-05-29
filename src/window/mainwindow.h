@@ -19,11 +19,12 @@ class MainWindow : public QMainWindow
 public:
     explicit MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
+    StateManager *stateManager = nullptr;
 
 private:
     Ui::MainWindow *ui = nullptr;
     AddTreePopup *addTreePopup = nullptr;
-    StateManager *stateManager = nullptr;
+
     NodeEditor *nodeEditor = nullptr;
 
     GraphWidget *graphWidget = nullptr;
