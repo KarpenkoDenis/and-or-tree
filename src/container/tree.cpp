@@ -1,5 +1,4 @@
 #include "tree.h"
-#include <QMessageBox>
 
 Tree::Tree()
 {
@@ -23,27 +22,23 @@ void Tree::setName(const QString &value)
 }
 
 void Tree::addNode(int parentID, QString name, Type type)
-try
 {
     root.addNode(parentID, name, type);
-}
-catch(TreeException& e)
-{
-    QMessageBox::critical(nullptr, "Error", e.what(), QMessageBox::Ok);
 }
 
 void Tree::deleteNode(int id)
 {
     if(id == root.getId())
         this->clear();
-    try
-    {
-        root.deleteNode(id);
-    }
-    catch(TreeException& e)
-    {
-        QMessageBox::critical(nullptr, "Error", e.what(), QMessageBox::Ok);
-    }
+    root.deleteNode(id);
+    //Переместить к использованию Tree::deleteNode, т.к. здесь ловить исключение не надо
+//    try
+//    {
+//    }
+//    catch(TreeException& e)
+//    {
+//        QMessageBox::critical(nullptr, "Error", e.what(), QMessageBox::Ok);
+//    }
 }
 
 void Tree::clear()

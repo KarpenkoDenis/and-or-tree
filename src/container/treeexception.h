@@ -8,40 +8,38 @@
 class TreeException
 {
 public:
-    TreeException();
-    explicit TreeException(QString functionName);
-    QTime getTime();
-    QString getFunctionName();
-    virtual QString what();
+    explicit TreeException(const Node* root);
+    virtual ~TreeException();
+    const Node* getRoot() const;
+    virtual QString what() const;
 private:
-    QString functionName;
-    QTime time;
+    const Node* root;
 };
 
 class CantFindValidParentException : public TreeException
 {
 public:
-    CantFindValidParentException();
-    CantFindValidParentException(QString functionName, int parentID, QString name, Type type);
-    CantFindValidParentException(QString functionName, QString parentName, QString name, Type type);
-    QString what() override;
-    int getParentID();
-    QString getName();
-    Type getType();
+    CantFindValidParentException(const Node* root, const int parentID, const QString& name, const Type& type);
+    CantFindValidParentException(const Node* root, const QString& parentName, const QString& name, const Type& type);
+    ~CantFindValidParentException() override;
+    QString what() const override;
+    int getParentID() const;
+    QString getNodeName() const;
+    Type getType() const;
 private:
     int parentID;
     QString parentName;
-    QString name;
+    QString nodeName;
     Type type;
 };
 
 class CantFindNodeToDeleteException : public TreeException
 {
 public:
-    CantFindNodeToDeleteException();
-    CantFindNodeToDeleteException(QString functionName, int id);
-    QString what() override;
-    int getId();
+    CantFindNodeToDeleteException(const Node* root, const int id);
+    ~CantFindNodeToDeleteException() override;
+    QString what() const override;
+    int getId() const;
 private:
     int id;
 };
