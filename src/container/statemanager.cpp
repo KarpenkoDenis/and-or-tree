@@ -42,14 +42,14 @@ StateManager::~StateManager()
 
 
     // Serialization
-//    QFile file("data.trees");
-//    file.open(QIODevice::WriteOnly);
-//    QDataStream out(&file);
-//    out << (qint32)trees.count();
-//    for(const Tree& tree : trees)
-//    {
-//        out << tree;
-//    }
+    QFile file("data.trees");
+    file.open(QIODevice::WriteOnly);
+    QDataStream out(&file);
+    out << (qint32)trees.count();
+    for(const Tree& tree : trees)
+    {
+        out << tree;
+    }
 }
 
 QVector<Tree> StateManager::getTrees() const

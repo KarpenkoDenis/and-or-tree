@@ -14,7 +14,7 @@ public:
     QString getFunctionName();
     virtual QString what();
 private:
-    QString functionName;
+    QString functionName;//убрать
     QTime time;
 };
 

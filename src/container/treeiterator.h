@@ -24,7 +24,7 @@ public:
     typename TreeIterator::reference operator*() const;
     TreeIterator& operator++();
 private:
-    Tree* r;
+    Tree* r;  //переделать на ссылку
     Node* c;
 
     Node *findNext(Node *curr, Node finding);

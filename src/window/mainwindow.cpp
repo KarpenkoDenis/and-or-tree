@@ -4,7 +4,7 @@
 #include "widget/listlinewidget.h"
 #include <QDebug>
 #include "widget/searchcriteriawidget.h"
-
+#include <QLayoutItem>
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
@@ -44,11 +44,23 @@ void MainWindow::openEditor(Tree *tree)
 void MainWindow::addSearchCriteria()
 {
     ui->searchCriteriaVBox->addWidget(new SearchCriteriaWidget(this));
+
 }
 
 void MainWindow::searchForCriteria()
 {
-    ui->listVBox->children();
+    ui->searchCriteriaVBox->children();
+    //ui->searchCriteriaVBox
+    QVector<QString> values;
+    qDebug() << "searchForCriteria: ";
+    for(int i=0; i< ui->searchCriteriaVBox->count(); i++)
+    {
+        qDebug() << "itemAt: " << ui->searchCriteriaVBox->itemAt(i);
+//        auto save = dynamic_cast<QLayoutItem>(&ui->searchCriteriaVBox->itemAt(i));
+    }
+\
+
+
     //loop and get selected criteria from each via getCriteria
 }
 
