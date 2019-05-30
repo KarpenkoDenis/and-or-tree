@@ -2,7 +2,6 @@
 
 SearchCriteriaBoxLayout::SearchCriteriaBoxLayout() : QVBoxLayout ()
 {
-
 }
 
 SearchCriteriaBoxLayout::~SearchCriteriaBoxLayout()

@@ -8,7 +8,7 @@
 #include "widget/graphwidget.h"
 #include "widget/nodetreegraph.h"
 #include "widget/search/searchcriteriaboxlayout.h"
-#include "widget/list/listviewboxlayout.h"
+#include "widget/listview/listviewboxlayout.h"
 #include "container/domain/tree.h"
 
 namespace Ui {
@@ -39,7 +39,6 @@ private:
     void restoreState();
 
 public slots:
-    void addListLine(Tree tree);
     void openEditor(Tree *tree);
     void handleAddTreeButtonClick();
     void handleAddSearchCriteriaButtonClick();

@@ -34,8 +34,8 @@ SOURCES += \
         service/statemanager.cpp \
         widget/edge.cpp \
         widget/graphwidget.cpp \
-        widget/list/listviewboxlayout.cpp \
-        widget/list/listlinewidget.cpp \
+        widget/listview/listlinewidget.cpp \
+        widget/listview/listviewboxlayout.cpp \
         widget/nodeeditor.cpp \
         widget/nodetreegraph.cpp \
         widget/search/searchcriteriaboxlayout.cpp \
@@ -54,8 +54,8 @@ HEADERS += \
         service/statemanager.h \
         widget/edge.h \
         widget/graphwidget.h \
-        widget/list/listviewboxlayout.h \
-        widget/list/listlinewidget.h \
+        widget/listview/listlinewidget.h \
+        widget/listview/listviewboxlayout.h \
         widget/nodeeditor.h \
         widget/nodetreegraph.h \
         widget/search/searchcriteriaboxlayout.h \
