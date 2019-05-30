@@ -52,7 +52,12 @@ void MainWindow::handleAddSearchCriteriaButtonClick()
 void MainWindow::handleSearchButtonClick()
 {
     QMap<QString, QString> searchCriteria = searchCriteriaBoxLayout->getSearchCriteria();
-
+    QVector<int> result = findTrees(stateManager->getTrees(), searchCriteria);
+    qDebug() << "result";
+    for(auto num: result)
+    {
+        qDebug() << "num" << num;
+    }
     // tree list
     // populate trees to table
 }
