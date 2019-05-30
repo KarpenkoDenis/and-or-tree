@@ -25,37 +25,41 @@ DEFINES += QT_DEPRECATED_WARNINGS
 CONFIG += c++11
 
 SOURCES += \
-        container/node.cpp \
-        container/statemanager.cpp \
-        container/tree.cpp \
+        container/domain/node.cpp \
+        container/domain/tree.cpp \
+        container/exception/treeexception.cpp \
         container/treeiterator.cpp \
-        container/treeexception.cpp \
         main.cpp \
-        search.cpp \
+        service/search.cpp \
+        service/statemanager.cpp \
         widget/edge.cpp \
         widget/graphwidget.cpp \
-        widget/listlinewidget.cpp \
+        widget/list/listviewboxlayout.cpp \
+        widget/list/listlinewidget.cpp \
         widget/nodeeditor.cpp \
         widget/nodetreegraph.cpp \
-        widget/searchcriteriawidget.cpp \
+        widget/search/searchcriteriaboxlayout.cpp \
+        widget/search/searchcriteriawidget.cpp \
         widget/treenode.cpp \
         window/addtreepopup.cpp \
         window/mainwindow.cpp
 
 HEADERS += \
         container/allocator.h \
-        container/node.h \
-        container/statemanager.h \
-        container/tree.h \
+        container/domain/node.h \
+        container/domain/tree.h \
+        container/exception/treeexception.h \
         container/treeiterator.h \
-        container/treeexception.h \
-        search.h \
+        service/search.h \
+        service/statemanager.h \
         widget/edge.h \
         widget/graphwidget.h \
-        widget/listlinewidget.h \
+        widget/list/listviewboxlayout.h \
+        widget/list/listlinewidget.h \
         widget/nodeeditor.h \
         widget/nodetreegraph.h \
-        widget/searchcriteriawidget.h \
+        widget/search/searchcriteriaboxlayout.h \
+        widget/search/searchcriteriawidget.h \
         widget/treenode.h \
         window/addtreepopup.h \
         window/mainwindow.h

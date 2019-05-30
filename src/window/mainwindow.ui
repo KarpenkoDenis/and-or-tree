@@ -30,7 +30,7 @@
      </size>
     </property>
     <property name="currentIndex">
-     <number>0</number>
+     <number>1</number>
     </property>
     <widget class="QWidget" name="userTab">
      <attribute name="title">
@@ -164,27 +164,7 @@
         <height>521</height>
        </rect>
       </property>
-      <layout class="QVBoxLayout" name="verticalLayout">
-       <item>
-        <layout class="QVBoxLayout" name="searchCriteriaVBox"/>
-       </item>
-       <item>
-        <spacer name="verticalSpacer_2">
-         <property name="orientation">
-          <enum>Qt::Vertical</enum>
-         </property>
-         <property name="sizeType">
-          <enum>QSizePolicy::Expanding</enum>
-         </property>
-         <property name="sizeHint" stdset="0">
-          <size>
-           <width>20</width>
-           <height>40</height>
-          </size>
-         </property>
-        </spacer>
-       </item>
-      </layout>
+      <layout class="QVBoxLayout" name="searchCriteriaBoxLayoutWrapper"/>
      </widget>
      <widget class="Line" name="line_2">
       <property name="geometry">
@@ -256,31 +236,11 @@
             <rect>
              <x>10</x>
              <y>40</y>
-             <width>501</width>
-             <height>361</height>
+             <width>511</width>
+             <height>601</height>
             </rect>
            </property>
-           <layout class="QVBoxLayout" name="listVBoxHandler">
-            <item>
-             <layout class="QVBoxLayout" name="listVBox"/>
-            </item>
-            <item>
-             <spacer name="verticalSpacer">
-              <property name="orientation">
-               <enum>Qt::Vertical</enum>
-              </property>
-              <property name="sizeType">
-               <enum>QSizePolicy::Expanding</enum>
-              </property>
-              <property name="sizeHint" stdset="0">
-               <size>
-                <width>20</width>
-                <height>40</height>
-               </size>
-              </property>
-             </spacer>
-            </item>
-           </layout>
+           <layout class="QVBoxLayout" name="listViewBoxLayoutWrapper"/>
           </widget>
          </widget>
          <widget class="QWidget" name="editorPage">
@@ -290,7 +250,7 @@
              <x>0</x>
              <y>0</y>
              <width>301</width>
-             <height>651</height>
+             <height>601</height>
             </rect>
            </property>
            <layout class="QVBoxLayout" name="editorLayout"/>
@@ -303,6 +263,19 @@
              <width>741</width>
              <height>631</height>
             </rect>
+           </property>
+          </widget>
+          <widget class="QPushButton" name="closeEditorButton">
+           <property name="geometry">
+            <rect>
+             <x>0</x>
+             <y>610</y>
+             <width>301</width>
+             <height>31</height>
+            </rect>
+           </property>
+           <property name="text">
+            <string>Назад</string>
            </property>
           </widget>
          </widget>

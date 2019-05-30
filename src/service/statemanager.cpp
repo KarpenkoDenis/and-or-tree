@@ -4,9 +4,9 @@
 #include <QDataStream>
 #include <QMessageBox>
 
-
 StateManager::StateManager(QObject *parent) : QObject(parent)
 {
+
     try
     {
         //
@@ -24,7 +24,6 @@ StateManager::StateManager(QObject *parent) : QObject(parent)
         tr1.root.addNode("Окна", "Окна2", And);
         tr1.root.addNode("Окна", "Окна3", And);
         tr1.root.addNode("Окна", "Окна4", And);
-
         tr1.root.addNode("Колёса", "Колёса1", And);
         tr1.root.addNode("Колёса", "Колёса2", And);
         tr1.root.addNode("Колёса", "Колёса3", And);
@@ -36,7 +35,6 @@ StateManager::StateManager(QObject *parent) : QObject(parent)
         trees.append(tr1);
         trees.append(tr2);
         trees.append(tr3);
-        //
 
     }
     catch(TreeException& e)
@@ -47,28 +45,34 @@ StateManager::StateManager(QObject *parent) : QObject(parent)
 
 StateManager::~StateManager()
 {
-
-
-    // Serialization
-//    QFile file("data.trees");
-//    file.open(QIODevice::WriteOnly);
-//    QDataStream out(&file);
-//    out << (qint32)trees.count();
-//    for(const Tree& tree : trees)
-//    {
-//        out << tree;
-//    }
+    serializeState();
 }
+
 
 QVector<Tree> StateManager::getTrees() const
 {
     return trees;
 }
-void StateManager::restoreTrees()
+
+void StateManager::serializeState()
 {
-    // Deserialization
+    QFile file("data.trees");
+    file.open(QIODevice::WriteOnly);
+
+    QDataStream out(&file);
+    out << (qint32)trees.count();
+
+    for(const Tree& tree : trees)
+    {
+        out << tree;
+    }
+}
+
+void StateManager::deserializeState()
+{
     QFile file("data.trees");
     file.open(QIODevice::ReadOnly);
+
     if(file.isOpen())
     {
         QDataStream in(&file);
@@ -80,7 +84,7 @@ void StateManager::restoreTrees()
             in >> tree;
             trees.append(tree);
             qDebug() << "Tree with name '" + tree.getName() + "' was restored.";
-            emit treeCreated(tree);
+            emit treeCreated();
         }
     }
 }
@@ -92,5 +96,5 @@ void StateManager::createTree(const QString &name)
     trees.append(tree);
     qDebug() << "Tree with name '" + name + "' was created.";
 
-    emit treeCreated(tree);
+    emit treeCreated();
 }

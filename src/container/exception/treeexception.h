@@ -3,7 +3,7 @@
 
 #include <QString>
 #include <QTime>
-#include "node.h"
+#include "container/domain/node.h"
 
 class TreeException
 {

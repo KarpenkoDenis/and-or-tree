@@ -10,7 +10,6 @@
 NodeTreeGraph::NodeTreeGraph(QWidget *parent) : QWidget(parent)
 {
     treeGraphScene = new QGraphicsScene();
-
 }
 
 NodeTreeGraph::~NodeTreeGraph()

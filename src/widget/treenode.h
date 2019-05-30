@@ -3,7 +3,7 @@
 
 #include <QGraphicsItem>
 #include <QList>
-#include "container/node.h"
+#include "container/domain/node.h"
 
 class Edge;
 class GraphWidget;

@@ -51,10 +51,6 @@ qint32 Tree::size()
     return root.size();
 }
 
-Node *Tree::findKLP_next_by(Node * el)
-{
-
-}
 
 //Node *Tree::find(QString name)
 //{

@@ -5,7 +5,7 @@
 
 
 template <class T>
-struct Allocator {
+struct Allocator { //lj,fdbnm bcgjkmpjdfybt ( yfcktljdfnm yfghbvgth)
     typedef T value_type;
     Allocator() noexcept {}
     template <class U> Allocator (const Allocator<U>&) noexcept {

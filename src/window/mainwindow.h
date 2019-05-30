@@ -3,10 +3,13 @@
 
 #include <QMainWindow>
 #include "addtreepopup.h"
-#include "container/statemanager.h"
+#include "service/statemanager.h"
 #include "widget/nodeeditor.h"
 #include "widget/graphwidget.h"
 #include "widget/nodetreegraph.h"
+#include "widget/search/searchcriteriaboxlayout.h"
+#include "widget/list/listviewboxlayout.h"
+#include "container/domain/tree.h"
 
 namespace Ui {
 class MainWindow;
@@ -26,19 +29,23 @@ private:
     AddTreePopup *addTreePopup = nullptr;
 
     NodeEditor *nodeEditor = nullptr;
-
+    SearchCriteriaBoxLayout *searchCriteriaBoxLayout = nullptr;
+    ListViewBoxLayout *listViewBoxLayout = nullptr;
     GraphWidget *graphWidget = nullptr;
     NodeTreeGraph *nodeTreeGraph = nullptr;
 
+    void initializeWidget();
     void defineConnects();
-    void initializeUi();
+    void restoreState();
 
 public slots:
-    void showAddTreePopup();
     void addListLine(Tree tree);
     void openEditor(Tree *tree);
-    void addSearchCriteria();
-    void searchForCriteria();
+    void handleAddTreeButtonClick();
+    void handleAddSearchCriteriaButtonClick();
+    void handleSearchButtonClick();
+    void handleCloseEditorButtonClick();
+    void refreshListView();
 };
 
 #endif // MAINWINDOW_H

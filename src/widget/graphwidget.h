@@ -2,7 +2,7 @@
 #define GRAPHWIDGET_H
 
 #include <QGraphicsView>
-#include "container/tree.h"
+#include "container/domain/tree.h"
 
 class TreeNode;
 

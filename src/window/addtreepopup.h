@@ -4,7 +4,6 @@
 #include <QWidget>
 #include <QDebug>
 
-
 namespace Ui {
 class AddTreePopup;
 }
