@@ -197,7 +197,7 @@
        <item>
         <widget class="QStackedWidget" name="stackedWidget">
          <property name="currentIndex">
-          <number>1</number>
+          <number>0</number>
          </property>
          <widget class="QWidget" name="specificationListPage">
           <widget class="QLabel" name="label_4">
@@ -240,27 +240,7 @@
              <height>601</height>
             </rect>
            </property>
-           <layout class="QVBoxLayout" name="listVBoxHandler">
-            <item>
-             <layout class="QVBoxLayout" name="listVBox"/>
-            </item>
-            <item>
-             <spacer name="verticalSpacer">
-              <property name="orientation">
-               <enum>Qt::Vertical</enum>
-              </property>
-              <property name="sizeType">
-               <enum>QSizePolicy::Expanding</enum>
-              </property>
-              <property name="sizeHint" stdset="0">
-               <size>
-                <width>20</width>
-                <height>40</height>
-               </size>
-              </property>
-             </spacer>
-            </item>
-           </layout>
+           <layout class="QVBoxLayout" name="listViewBoxLayoutWrapper"/>
           </widget>
          </widget>
          <widget class="QWidget" name="editorPage">

@@ -3,18 +3,19 @@
 
 #include <QWidget>
 #include "container/domain/tree.h"
-#include "window/mainwindow.h"
+
 class ListLineWidget : public QWidget
 {
     Q_OBJECT
 public:
-    explicit ListLineWidget(Tree &tree, MainWindow *mainWindow, QWidget *parent = nullptr);
+    explicit ListLineWidget(Tree *tree, QWidget *parent = nullptr);
 
 private:
-    Tree tree;
+    Tree* tree;
 
 signals:
-    void openEditor(Tree *tree);
+    void editButtonClicked(Tree *tree);
+    void removeButtonClicked(Tree *tree);
 
 public slots:
     void handleEditButtonClick();
