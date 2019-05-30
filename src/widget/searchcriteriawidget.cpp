@@ -41,8 +41,13 @@ QPair<QString, QString> SearchCriteriaWidget::getCriteria()
 
 void SearchCriteriaWidget::handleSearchCriteriaTypeSelect(QString typeName)
 {
-    QVector<QString> values = this->properties[typeName];
+//    QVector<QString> values = this->properties[typeName];
+    QList<QString> values;
+    for(auto el:this->properties[typeName])
+    {
+        values.push_back(el);
+    }
     searchCriteriaValueComboBox->clear();
-//    searchCriteriaValueComboBox->addItems(values);
+    searchCriteriaValueComboBox->addItems(values);
     searchCriteriaValueComboBox->setCurrentIndex(0);
 }
