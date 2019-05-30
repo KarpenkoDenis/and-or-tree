@@ -2,7 +2,7 @@
 #define LISTLINEWIDGET_H
 
 #include <QWidget>
-#include "container/tree.h"
+#include "container/domain/tree.h"
 #include "window/mainwindow.h"
 class ListLineWidget : public QWidget
 {

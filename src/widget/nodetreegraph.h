@@ -1,9 +1,8 @@
 #ifndef NODETREEGRAPH_H
 #define NODETREEGRAPH_H
 
-
 #include <QWidget>
-#include "container/node.h"
+#include "container/domain/node.h"
 #include <QLabel>
 #include <QLineEdit>
 #include <QPushButton>
@@ -24,11 +23,7 @@ public:
     QGraphicsScene *treeGraphScene = nullptr;
     QGraphicsRectItem *reactangle;
 
-
 private:
-
-
-
 
 signals:
 

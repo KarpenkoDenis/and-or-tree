@@ -8,7 +8,7 @@
 class Tree;
 class Node;
 
-#include "tree.h"
+#include "container/domain/tree.h"
 
 //template<typename Root, typename CurrElem>
 class TreeIterator: public std::iterator<std::input_iterator_tag, Node>

@@ -2,7 +2,7 @@
 #define STATEMANAGER_H
 #include <QObject>
 #include <QVector>
-#include "tree.h"
+#include "container/domain/tree.h"
 
 class StateManager : public QObject
 {

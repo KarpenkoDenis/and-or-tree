@@ -2,7 +2,7 @@
 #define NODEEDITOR_H
 
 #include <QWidget>
-#include "container/node.h"
+#include "container/domain/node.h"
 #include <QLabel>
 #include <QLineEdit>
 #include <QPushButton>

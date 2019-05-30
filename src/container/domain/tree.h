@@ -4,11 +4,11 @@
 #include <QObject>
 #include "node.h"
 #include "memory"
-#include "treeexception.h"
+#include "container/exception/treeexception.h"
 
 class TreeIterator;
 
-#include "treeiterator.h"
+#include "container/treeiterator.h"
 
 class Tree
 {
