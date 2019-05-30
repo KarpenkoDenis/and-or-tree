@@ -14,8 +14,10 @@ private:
 public:
     explicit StateManager(QObject *parent = nullptr);
     ~StateManager();
+
     QVector<Tree> getTrees() const;
-    void restoreTrees();
+    void serializeState();
+    void deserializeState();
 
 signals:
     void treeCreated(Tree tree);

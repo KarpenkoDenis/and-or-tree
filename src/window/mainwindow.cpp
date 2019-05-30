@@ -24,6 +24,7 @@ MainWindow::~MainWindow()
     delete addTreePopup;
     delete nodeEditor;
     delete stateManager;
+    delete searchCriteriaBoxLayout;
 }
 
 void MainWindow::handleAddTreeButtonClick()
@@ -56,6 +57,10 @@ void MainWindow::handleSearchButtonClick()
     // populate trees to table
 }
 
+void MainWindow::handleCloseEditorButtonClick()
+{
+    ui->stackedWidget->setCurrentIndex(0);
+}
 
 void MainWindow::initializeWidget(){
     ui->setupUi(this);
@@ -73,14 +78,16 @@ void MainWindow::initializeWidget(){
 
 void MainWindow::defineConnects(){
     QObject::connect(ui->addButton, SIGNAL(clicked(bool)), this, SLOT(handleAddTreeButtonClick()));
-    QObject::connect(stateManager, SIGNAL(treeCreated(Tree)), this, SLOT(addListLine(Tree)));
     QObject::connect(ui->addSearchCriteriaButton, SIGNAL(clicked(bool)), this, SLOT(handleAddSearchCriteriaButtonClick()));
     QObject::connect(ui->searchButton, SIGNAL(clicked(bool)), this, SLOT(handleSearchButtonClick()));
+    QObject::connect(ui->closeEditorButton, SIGNAL(clicked(bool)), this, SLOT(handleCloseEditorButtonClick()));
+
     QObject::connect(addTreePopup, SIGNAL(createTree(QString)), stateManager, SLOT(createTree(QString)));
+    QObject::connect(stateManager, SIGNAL(treeCreated(Tree)), this, SLOT(addListLine(Tree)));
     QObject::connect(graphWidget, SIGNAL(nodeClicked(Node*)), nodeEditor, SLOT(configure(Node*)));
 }
 
 void MainWindow::restoreState()
 {
-    stateManager->restoreTrees();
+//    stateManager->deserializeState();
 }

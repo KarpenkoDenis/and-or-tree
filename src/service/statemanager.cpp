@@ -3,7 +3,6 @@
 #include <QFile>
 #include <QDataStream>
 
-
 StateManager::StateManager(QObject *parent) : QObject(parent)
 {
     //
@@ -33,34 +32,38 @@ StateManager::StateManager(QObject *parent) : QObject(parent)
     trees.append(tr1);
     trees.append(tr2);
     trees.append(tr3);
-    //
-
 }
 
 StateManager::~StateManager()
 {
+    serializeState();
+}
 
 
-    // Serialization
+QVector<Tree> StateManager::getTrees() const
+{
+    return trees;
+}
+
+void StateManager::serializeState()
+{
     QFile file("data.trees");
     file.open(QIODevice::WriteOnly);
+
     QDataStream out(&file);
     out << (qint32)trees.count();
+
     for(const Tree& tree : trees)
     {
         out << tree;
     }
 }
 
-QVector<Tree> StateManager::getTrees() const
+void StateManager::deserializeState()
 {
-    return trees;
-}
-void StateManager::restoreTrees()
-{
-    // Deserialization
     QFile file("data.trees");
     file.open(QIODevice::ReadOnly);
+
     if(file.isOpen())
     {
         QDataStream in(&file);

@@ -5,6 +5,13 @@ SearchCriteriaBoxLayout::SearchCriteriaBoxLayout() : QVBoxLayout ()
 
 }
 
+SearchCriteriaBoxLayout::~SearchCriteriaBoxLayout()
+{
+    for (auto widget : criteria) {
+        delete widget;
+    }
+}
+
 QMap<QString, QString> SearchCriteriaBoxLayout::getSearchCriteria()
 {
     QMap<QString, QString> criteriaMap;

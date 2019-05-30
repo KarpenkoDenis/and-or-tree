@@ -30,7 +30,7 @@
      </size>
     </property>
     <property name="currentIndex">
-     <number>0</number>
+     <number>1</number>
     </property>
     <widget class="QWidget" name="userTab">
      <attribute name="title">
@@ -197,7 +197,7 @@
        <item>
         <widget class="QStackedWidget" name="stackedWidget">
          <property name="currentIndex">
-          <number>0</number>
+          <number>1</number>
          </property>
          <widget class="QWidget" name="specificationListPage">
           <widget class="QLabel" name="label_4">
@@ -236,8 +236,8 @@
             <rect>
              <x>10</x>
              <y>40</y>
-             <width>501</width>
-             <height>361</height>
+             <width>511</width>
+             <height>601</height>
             </rect>
            </property>
            <layout class="QVBoxLayout" name="listVBoxHandler">
@@ -270,7 +270,7 @@
              <x>0</x>
              <y>0</y>
              <width>301</width>
-             <height>651</height>
+             <height>601</height>
             </rect>
            </property>
            <layout class="QVBoxLayout" name="editorLayout"/>
@@ -283,6 +283,19 @@
              <width>741</width>
              <height>631</height>
             </rect>
+           </property>
+          </widget>
+          <widget class="QPushButton" name="closeEditorButton">
+           <property name="geometry">
+            <rect>
+             <x>0</x>
+             <y>610</y>
+             <width>301</width>
+             <height>31</height>
+            </rect>
+           </property>
+           <property name="text">
+            <string>Назад</string>
            </property>
           </widget>
          </widget>

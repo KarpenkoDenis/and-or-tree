@@ -10,6 +10,8 @@ class SearchCriteriaBoxLayout : public QVBoxLayout
     Q_OBJECT
 public:
     explicit SearchCriteriaBoxLayout();
+    ~SearchCriteriaBoxLayout();
+
     QMap<QString, QString> getSearchCriteria();
     void addSearchCriteriaWidget(SearchCriteriaWidget*);
 

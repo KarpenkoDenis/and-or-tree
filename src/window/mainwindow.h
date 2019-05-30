@@ -42,6 +42,7 @@ public slots:
     void handleAddTreeButtonClick();
     void handleAddSearchCriteriaButtonClick();
     void handleSearchButtonClick();
+    void handleCloseEditorButtonClick();
 };
 
 #endif // MAINWINDOW_H
