@@ -50,7 +50,10 @@ void MainWindow::handleAddSearchCriteriaButtonClick()
 
 void MainWindow::handleSearchButtonClick()
 {
-    QList<QPair<QString, QString>> searchCriteria = searchCriteriaBoxLayout->getSearchCriteria();
+    QMap<QString, QString> searchCriteria = searchCriteriaBoxLayout->getSearchCriteria();
+
+    // tree list
+    // populate trees to table
 }
 
 

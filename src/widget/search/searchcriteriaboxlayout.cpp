@@ -5,15 +5,16 @@ SearchCriteriaBoxLayout::SearchCriteriaBoxLayout() : QVBoxLayout ()
 
 }
 
-QList<QPair<QString, QString>> SearchCriteriaBoxLayout::getSearchCriteria()
+QMap<QString, QString> SearchCriteriaBoxLayout::getSearchCriteria()
 {
-    QList<QPair<QString, QString>> criteriaList;
+    QMap<QString, QString> criteriaMap;
 
     for (auto widget : criteria) {
-        criteriaList.push_back(widget->getCriteria());
+        QPair<QString, QString> pair = widget->getCriteria();
+        criteriaMap[pair.first] = pair.second;
     }
 
-    return criteriaList;
+    return criteriaMap;
 }
 
 void SearchCriteriaBoxLayout::addSearchCriteriaWidget(SearchCriteriaWidget *widget)
