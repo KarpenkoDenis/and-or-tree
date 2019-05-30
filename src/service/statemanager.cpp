@@ -29,15 +29,6 @@ StateManager::StateManager(QObject *parent) : QObject(parent)
     tr2.setName("Ваз");
     Tree tr3;
     tr3.setName("Копейка");
-    tr3.root.addNode("Колёса", Or);
-    tr3.root.addNode("Фары", Or);
-    tr3.root.addNode("Окна", Or);
-    tr3.root.addNode("Фары", "Фары3", And);
-    tr3.root.addNode("Фары", "Фары4", And);
-    tr3.root.addNode("Окна", "Окна3", And);
-    tr3.root.addNode("Окна", "Окна4", And);
-    tr3.root.addNode("Колёса", "Колёса3", And);
-    tr3.root.addNode("Колёса", "Колёса4", And);
     trees.append(tr1);
     trees.append(tr2);
     trees.append(tr3);
@@ -84,7 +75,7 @@ void StateManager::deserializeState()
             in >> tree;
             trees.append(tree);
             qDebug() << "Tree with name '" + tree.getName() + "' was restored.";
-            emit treeCreated(tree);
+            emit treeCreated();
         }
     }
 }
@@ -96,5 +87,5 @@ void StateManager::createTree(const QString &name)
     trees.append(tree);
     qDebug() << "Tree with name '" + name + "' was created.";
 
-    emit treeCreated(tree);
+    emit treeCreated();
 }
