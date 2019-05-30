@@ -1,6 +1,7 @@
 #ifndef TREEITERATOR_H
 #define TREEITERATOR_H
 #include <iterator>
+#include <vector>
 //#include "tree.h"
 
 
@@ -25,6 +26,11 @@ public:
 private:
     Tree* r;
     Node* c;
+
+    Node *findNext(Node *curr, Node finding);
+    void KLP(Node * curr);
+    std::vector<Node *> passed;
+
 };
 
 #endif // TREEITERATOR_H

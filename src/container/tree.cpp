@@ -83,7 +83,14 @@ Tree::iterator Tree::begin()
 
 Tree::iterator Tree::end()
 {
-    return iterator(nullptr, nullptr);
+    Node * last = &this->root;
+    while(last->children.size())
+    {
+        auto save = last->children.end();
+        save--;
+        last = &*(save);
+    }
+    return iterator(this, last);
 }
 
 //Tree::const_iterator Tree::begin() const

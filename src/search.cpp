@@ -1,5 +1,5 @@
 #include "search.h"
-
+#include <QDebug>
 QVector<int> findTrees(QVector<Tree> trees, QMap<QString, QString> properties)
 {
     QVector<int> resultTrees;
@@ -38,9 +38,12 @@ QMap<QString, QVector<QString>> findProperties(QVector<Tree> trees)
     {
         for(TreeIterator iter = tree.begin(); iter!=tree.end(); ++iter)
         {
+            qDebug() << "(*iter).getName()"  << (*iter).getName();
             if((*iter).getType() == Or)
             {
+
                 QVector<QString> childNames = resultProperties[(*iter).getName()];
+                qDebug() << "(*iter).getType() == Or";
                 for(auto child : (*iter).children)
                 {
                     childNames.append(child.getName());

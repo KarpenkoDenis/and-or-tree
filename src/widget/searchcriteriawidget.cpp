@@ -6,12 +6,12 @@
 SearchCriteriaWidget::SearchCriteriaWidget(MainWindow *mainWindow, QWidget *parent) : QWidget(parent)
 {
     this->mainWindow = mainWindow;
-QVector<Tree> trees = this->mainWindow->stateManager->getTrees();
-//    this->properties = findProperties(trees);
-//    QList<QString> criterias = properties.keys();
+    QVector<Tree> trees = this->mainWindow->stateManager->getTrees();
+    this->properties = findProperties(trees);
+    QList<QString> criterias = properties.keys();
 
     searchCriteriaTypeComboBox = new QComboBox();
-//    searchCriteriaTypeComboBox->addItems(criterias);
+    searchCriteriaTypeComboBox->addItems(criterias);
     searchCriteriaValueComboBox = new QComboBox();
     removeSearchCriteriaButton = new QPushButton("Убрать");
 
