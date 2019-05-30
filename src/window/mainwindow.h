@@ -38,6 +38,8 @@ private:
     void defineConnects();
     void restoreState();
 
+    void clearLayout(QLayout *layout);
+
 public slots:
     void openEditor(Tree *tree);
     void handleAddTreeButtonClick();

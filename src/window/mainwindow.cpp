@@ -5,6 +5,7 @@
 #include "service/search.h"
 #include <QLayoutItem>
 #include <QDebug>
+#include <QLabel>
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
@@ -48,13 +49,32 @@ void MainWindow::handleSearchButtonClick()
 {
     QMap<QString, QString> searchCriteria = searchCriteriaBoxLayout->getSearchCriteria();
     QVector<int> result = findTrees(stateManager->getTrees(), searchCriteria);
-       qDebug() << "result";
-       for(auto num: result)
-       {
-           qDebug() << "num" << num;
-       }
-    // tree list
-    // populate trees to table
+    qDebug() << "result";
+    for(auto num: result)
+    {
+        qDebug() << "num" << num;
+    }
+
+    clearLayout(ui->searchResultBoxLayout);
+
+    for(auto num: result)
+    {
+        ui->searchResultBoxLayout->addWidget(new QPushButton(stateManager->getTrees()[num]->getName()));
+    }
+}
+
+void MainWindow::clearLayout(QLayout *layout) {
+    QLayoutItem *item;
+    while((item = layout->takeAt(0))) {
+        if (item->layout()) {
+            clearLayout(item->layout());
+            delete item->layout();
+        }
+        if (item->widget()) {
+            delete item->widget();
+        }
+        delete item;
+    }
 }
 
 void MainWindow::handleCloseEditorButtonClick()
@@ -100,5 +120,5 @@ void MainWindow::defineConnects(){
 
 void MainWindow::restoreState()
 {
-//    stateManager->deserializeState();
+    //    stateManager->deserializeState();
 }
