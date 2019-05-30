@@ -20,7 +20,7 @@ public:
     void deserializeState();
 
 signals:
-    void treeCreated(Tree tree);
+    void treeCreated();
 
 public slots:
     void createTree(const QString &name);

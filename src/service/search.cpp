@@ -6,28 +6,25 @@ QVector<int> findTrees(QVector<Tree> trees, QMap<QString, QString> properties)
     int currNum=0;
     for(auto tree : trees)
     {
-        bool goodTree = false;
-        foreach (QString key, properties.keys())
+        for(auto iter = tree.begin(); iter!=tree.end(); ++iter)
         {
-            goodTree = false;
-            for(auto iter = tree.begin(); iter!=tree.end(); ++iter)
+            bool goodTree = true;
+            foreach (QString key, properties.keys())
             {
-                QString childName=properties.value(key);
-                if((*iter).getName() == key)
-                {
-                    if((*iter).findChildByName(childName))
-                    {
-                        goodTree = true;
-                        break;
-                    }
-                }
+              QString childName=properties.value(key);
+              if((*iter).getName() == key)
+              {
+                  if(!(*iter).findChildByName(childName))
+                  {
+                    goodTree = false;
+                    break;
+                  }
+              }
             }
-            if(!goodTree)
-                break;
-        }
-        if(goodTree)
-        {
-            resultTrees.append(currNum);
+            if(goodTree)
+            {
+                resultTrees.append(currNum);
+            }
         }
         currNum++;
     }

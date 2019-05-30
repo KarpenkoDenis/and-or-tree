@@ -1,5 +1,5 @@
 #include "listviewboxlayout.h"
-#include <QVBoxLayout>
+#include "widget/list/listlinewidget.h"
 
 ListViewBoxLayout::ListViewBoxLayout() : QVBoxLayout()
 {

@@ -32,10 +32,6 @@ void MainWindow::handleAddTreeButtonClick()
     addTreePopup->show();
 }
 
-void MainWindow::addListLine(Tree tree){
-    ui->listVBox->addWidget(new ListLineWidget(tree, this));
-}
-
 void MainWindow::openEditor(Tree *tree)
 {
     ui->stackedWidget->setCurrentIndex(1);
@@ -52,12 +48,7 @@ void MainWindow::handleAddSearchCriteriaButtonClick()
 void MainWindow::handleSearchButtonClick()
 {
     QMap<QString, QString> searchCriteria = searchCriteriaBoxLayout->getSearchCriteria();
-    QVector<int> result = findTrees(stateManager->getTrees(), searchCriteria);
-    qDebug() << "result";
-    for(auto num: result)
-    {
-        qDebug() << "num" << num;
-    }
+
     // tree list
     // populate trees to table
 }
@@ -67,6 +58,12 @@ void MainWindow::handleCloseEditorButtonClick()
     ui->stackedWidget->setCurrentIndex(0);
 }
 
+void MainWindow::refreshListView()
+{
+    auto trees = stateManager->getTrees();
+    listViewBoxLayout->configure(trees);
+}
+
 void MainWindow::initializeWidget(){
     ui->setupUi(this);
 
@@ -74,11 +71,14 @@ void MainWindow::initializeWidget(){
     nodeTreeGraph = new NodeTreeGraph();
     graphWidget = new GraphWidget();
     searchCriteriaBoxLayout = new SearchCriteriaBoxLayout();
+    listViewBoxLayout = new ListViewBoxLayout();
 
     ui->editorLayout->addWidget(nodeEditor);
     ui->graphicsView->setScene(graphWidget->scene());
     ui->searchCriteriaBoxLayoutWrapper->addLayout(searchCriteriaBoxLayout);
     ui->searchCriteriaBoxLayoutWrapper->addStretch(1);
+    ui->listViewBoxLayoutWrapper->addLayout(listViewBoxLayout);
+    ui->listViewBoxLayoutWrapper->addStretch(1);
 }
 
 void MainWindow::defineConnects(){
@@ -88,7 +88,7 @@ void MainWindow::defineConnects(){
     QObject::connect(ui->closeEditorButton, SIGNAL(clicked(bool)), this, SLOT(handleCloseEditorButtonClick()));
 
     QObject::connect(addTreePopup, SIGNAL(createTree(QString)), stateManager, SLOT(createTree(QString)));
-    QObject::connect(stateManager, SIGNAL(treeCreated(Tree)), this, SLOT(addListLine(Tree)));
+    QObject::connect(stateManager, SIGNAL(treeCreated()), this, SLOT(refreshLishView()));
     QObject::connect(graphWidget, SIGNAL(nodeClicked(Node*)), nodeEditor, SLOT(configure(Node*)));
 }
 
