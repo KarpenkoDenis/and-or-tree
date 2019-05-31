@@ -25,6 +25,7 @@ MainWindow::~MainWindow()
     delete nodeEditor;
     delete stateManager;
     delete searchCriteriaBoxLayout;
+    delete searchResultBoxLayout;
 }
 
 void MainWindow::handleAddTreeButtonClick()
@@ -48,34 +49,10 @@ void MainWindow::handleAddSearchCriteriaButtonClick()
 void MainWindow::handleSearchButtonClick()
 {
     QMap<QString, QString> searchCriteria = searchCriteriaBoxLayout->getSearchCriteria();
-    QVector<int> result = findTrees(stateManager->getTrees(), searchCriteria);
-    qDebug() << "result";
-    for(auto num: result)
-    {
-        qDebug() << "num" << num;
-    }
-
-    clearLayout(ui->searchResultBoxLayout);
-
-    for(auto num: result)
-    {
-        ui->searchResultBoxLayout->addWidget(new QPushButton(stateManager->getTrees()[num]->getName()));
-    }
+    QVector<Tree*> searchResult = findTrees(stateManager->getTrees(), searchCriteria);
+    searchResultBoxLayout->configure(searchResult);
 }
 
-void MainWindow::clearLayout(QLayout *layout) {
-    QLayoutItem *item;
-    while((item = layout->takeAt(0))) {
-        if (item->layout()) {
-            clearLayout(item->layout());
-            delete item->layout();
-        }
-        if (item->widget()) {
-            delete item->widget();
-        }
-        delete item;
-    }
-}
 
 void MainWindow::handleCloseEditorButtonClick()
 {
@@ -95,6 +72,7 @@ void MainWindow::initializeWidget(){
     nodeTreeGraph = new NodeTreeGraph();
     graphWidget = new GraphWidget();
     searchCriteriaBoxLayout = new SearchCriteriaBoxLayout();
+    searchResultBoxLayout = new SearchResultBoxLayout();
     listViewBoxLayout = new ListViewBoxLayout();
 
     ui->editorLayout->addWidget(nodeEditor);
@@ -103,6 +81,9 @@ void MainWindow::initializeWidget(){
     ui->searchCriteriaBoxLayoutWrapper->addStretch(1);
     ui->listViewBoxLayoutWrapper->addLayout(listViewBoxLayout);
     ui->listViewBoxLayoutWrapper->addStretch(1);
+
+    ui->searchResultBoxLayoutWrapper->addLayout(searchResultBoxLayout);
+    ui->searchResultBoxLayoutWrapper->addStretch(1);
 }
 
 void MainWindow::defineConnects(){

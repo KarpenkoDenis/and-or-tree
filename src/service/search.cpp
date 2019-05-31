@@ -1,8 +1,8 @@
 #include "search.h"
 #include <QDebug>
-QVector<int> findTrees(QVector<Tree*> trees, QMap<QString, QString> properties)
+QVector<Tree*> findTrees(QVector<Tree*> trees, QMap<QString, QString> properties)
 {
-    QVector<int> resultTrees;
+    QVector<Tree*> resultTrees;
     int currNum=0;
     for(auto tree : trees)
     {
@@ -27,10 +27,11 @@ QVector<int> findTrees(QVector<Tree*> trees, QMap<QString, QString> properties)
         }
         if(goodTree)
         {
-            resultTrees.append(currNum);
+            resultTrees.append(trees[currNum]);
         }
         currNum++;
     }
+
     return resultTrees;
 }
 

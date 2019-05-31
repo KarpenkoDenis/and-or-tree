@@ -1,4 +1,6 @@
 #include "searchcriteriaboxlayout.h"
+#include <QObject>
+#include <QDebug>
 
 SearchCriteriaBoxLayout::SearchCriteriaBoxLayout() : QVBoxLayout ()
 {
@@ -26,5 +28,13 @@ QMap<QString, QString> SearchCriteriaBoxLayout::getSearchCriteria()
 void SearchCriteriaBoxLayout::addSearchCriteriaWidget(SearchCriteriaWidget *widget)
 {
     criteria.push_back(widget);
+    QObject::connect(widget, SIGNAL(shouldRemoveSearchCriteria(SearchCriteriaWidget *)), this, SLOT(removeSearchCriteria(SearchCriteriaWidget*)));
+
     addWidget(widget);
+}
+
+void SearchCriteriaBoxLayout::removeSearchCriteria(SearchCriteriaWidget *widget)
+{
+    criteria.removeAt(criteria.indexOf(widget));
+    delete widget;
 }

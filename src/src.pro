@@ -40,6 +40,7 @@ SOURCES += \
         widget/nodetreegraph.cpp \
         widget/search/searchcriteriaboxlayout.cpp \
         widget/search/searchcriteriawidget.cpp \
+        widget/search/searchresultboxlayout.cpp \
         widget/treenode.cpp \
         window/addtreepopup.cpp \
         window/mainwindow.cpp
@@ -60,6 +61,7 @@ HEADERS += \
         widget/nodetreegraph.h \
         widget/search/searchcriteriaboxlayout.h \
         widget/search/searchcriteriawidget.h \
+        widget/search/searchresultboxlayout.h \
         widget/treenode.h \
         window/addtreepopup.h \
         window/mainwindow.h

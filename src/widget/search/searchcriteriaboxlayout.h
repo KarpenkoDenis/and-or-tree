@@ -17,6 +17,9 @@ public:
 
 private:
     QList<SearchCriteriaWidget*> criteria;
+
+public slots:
+    void removeSearchCriteria(SearchCriteriaWidget*);
 };
 
 #endif // SEARCHCRITERIABOXLAYOUT_H
