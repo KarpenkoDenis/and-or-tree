@@ -100,3 +100,9 @@ void StateManager::createTree(const QString &name)
 
     emit treeCreated();
 }
+
+void StateManager::removeTree(Tree *tree)
+{
+    trees.removeAt(trees.indexOf(tree));
+    emit treeRemoved();
+}

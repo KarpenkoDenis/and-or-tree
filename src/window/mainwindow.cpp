@@ -53,7 +53,6 @@ void MainWindow::handleSearchButtonClick()
     searchResultBoxLayout->configure(searchResult);
 }
 
-
 void MainWindow::handleCloseEditorButtonClick()
 {
     ui->stackedWidget->setCurrentIndex(0);
@@ -93,9 +92,11 @@ void MainWindow::defineConnects(){
     QObject::connect(ui->closeEditorButton, SIGNAL(clicked(bool)), this, SLOT(handleCloseEditorButtonClick()));
 
     QObject::connect(listViewBoxLayout, SIGNAL(shouldOpenTreeEditor(Tree*)), this, SLOT(openEditor(Tree*)));
+    QObject::connect(listViewBoxLayout, SIGNAL(shouldRemoveTree(Tree*)), stateManager, SLOT(removeTree(Tree*)));
 
     QObject::connect(addTreePopup, SIGNAL(createTree(QString)), stateManager, SLOT(createTree(QString)));
     QObject::connect(stateManager, SIGNAL(treeCreated()), this, SLOT(refreshListView()));
+    QObject::connect(stateManager, SIGNAL(treeRemoved()), this, SLOT(refreshListView()));
     QObject::connect(graphWidget, SIGNAL(nodeClicked(Node*)), nodeEditor, SLOT(configure(Node*)));
 }
 
