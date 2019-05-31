@@ -2,6 +2,8 @@
 #include <QDebug>
 QVector<Tree*> findTrees(QVector<Tree*> trees, QMap<QString, QString> properties)
 {
+    if(properties.size() == 0)
+        return trees;
     QVector<Tree*> resultTrees;
     int currNum=0;
     for(auto tree : trees)
