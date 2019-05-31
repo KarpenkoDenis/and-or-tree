@@ -9,33 +9,40 @@ StateManager::StateManager(QObject *parent) : QObject(parent)
 
     try
     {
-        //
-        Tree tr1;
-        tr1.setName("Bmw");
-        tr1.root.addNode("Колёса", Or);
-        tr1.root.addNode("Фары", Or);
-        tr1.root.addNode("Окна", Or);
-        tr1.root.addNode("Фары", "Фары1", And);
-        tr1.root.addNode("Фары", "Фары2", And);
-        tr1.root.addNode("Фары", "Фары3", And);
-        tr1.root.addNode("Фары", "Фары4", And);
+        Tree *tr1 = new Tree();
+        tr1->setName("Bmw");
+        tr1->root.addNode("Колёса", Or);
+        tr1->root.addNode("Фары", Or);
+        tr1->root.addNode("Окна", Or);
+        tr1->root.addNode("Фары", "Фары1", And);
+        tr1->root.addNode("Фары", "Фары2", And);
+        tr1->root.addNode("Фары", "Фары3", And);
+        tr1->root.addNode("Фары", "Фары4", And);
 
-        tr1.root.addNode("Окна", "Окна1", And);
-        tr1.root.addNode("Окна", "Окна2", And);
-        tr1.root.addNode("Окна", "Окна3", And);
-        tr1.root.addNode("Окна", "Окна4", And);
-        tr1.root.addNode("Колёса", "Колёса1", And);
-        tr1.root.addNode("Колёса", "Колёса2", And);
-        tr1.root.addNode("Колёса", "Колёса3", And);
-        tr1.root.addNode("Колёса", "Колёса4", And);
-        Tree tr2;
-        tr2.setName("Ваз");
-        Tree tr3;
-        tr3.setName("Копейка");
+        tr1->root.addNode("Окна", "Окна1", And);
+        tr1->root.addNode("Окна", "Окна2", And);
+        tr1->root.addNode("Окна", "Окна3", And);
+        tr1->root.addNode("Окна", "Окна4", And);
+        tr1->root.addNode("Колёса", "Колёса1", And);
+        tr1->root.addNode("Колёса", "Колёса2", And);
+        tr1->root.addNode("Колёса", "Колёса3", And);
+        tr1->root.addNode("Колёса", "Колёса4", And);
+        Tree* tr2 = new Tree();
+        tr2->setName("Ваз");
+        Tree* tr3 = new Tree();
+        tr3->setName("Копейка");
+        tr3->root.addNode("Колёса", Or);
+        tr3->root.addNode("Фары", Or);
+        tr3->root.addNode("Окна", Or);
+        tr3->root.addNode("Фары", "Фары3", And);
+        tr3->root.addNode("Фары", "Фары4", And);
+        tr3->root.addNode("Окна", "Окна3", And);
+        tr3->root.addNode("Окна", "Окна4", And);
+        tr3->root.addNode("Колёса", "Колёса3", And);
+        tr3->root.addNode("Колёса", "Колёса4", And);
         trees.append(tr1);
         trees.append(tr2);
         trees.append(tr3);
-
     }
     catch(TreeException& e)
     {
