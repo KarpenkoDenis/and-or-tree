@@ -61,7 +61,7 @@ void Node::addNode(int parentID, QString name, Type t)
 {
     if(!addNodeRec(parentID, name, t))
     {
-        throw CantFindValidParentException("Node::addNode", parentID, name, t);
+        throw CantFindValidParentException(this, parentID, name, t);
     }
 }
 
@@ -69,7 +69,7 @@ void Node::addNode(QString parentName, QString name, Type type)
 {
     if(!addNodeRec(parentName, name, type))
     {
-        throw CantFindValidParentException("Node::addNode", parentName, name, type);
+        throw CantFindValidParentException(this, parentName, name, type);
     }
 }
 bool Node::addNodeRec(int parentID, QString name, Type t)
@@ -118,7 +118,7 @@ void Node::deleteNode(int id)
 {
     if(!deleteNodeRec(id))
     {
-        throw CantFindNodeToDeleteException("Node::deleteNode", id);
+        throw CantFindNodeToDeleteException(this, id);
     }
 }
 

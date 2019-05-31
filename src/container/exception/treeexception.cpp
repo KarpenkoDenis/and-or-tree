@@ -1,98 +1,86 @@
 #include "treeexception.h"
 
-TreeException::TreeException():
-    time(QTime::currentTime())
+TreeException::TreeException(const Node* root) :
+    root(root)
 {
 }
 
-TreeException::TreeException(QString functionName) :
-    functionName(functionName),
-    time(QTime::currentTime())
+const Node* TreeException::getRoot() const
+{
+    return root;
+}
+
+TreeException::~TreeException()
 {
 }
 
-QTime TreeException::getTime()
+QString TreeException::what() const
 {
-    return time;
+    return "An error has occured in Tree class!";
 }
 
-QString TreeException::getFunctionName()
-{
-    return functionName;
-}
-
-QString TreeException::what()
-{
-    return "At " + time.toString() + " an error was occured in function " + functionName + "!";
-}
-
-CantFindValidParentException::CantFindValidParentException() :
-    TreeException(),
-    parentID(0),
-    type(Type::And)
-{
-}
-
-CantFindValidParentException::CantFindValidParentException(QString functionName, int parentID, QString name, Type type) :
-    TreeException(functionName),
+CantFindValidParentException::CantFindValidParentException(const Node* root, const int parentID, const QString& name, const Type& type) :
+    TreeException(root),
     parentID(parentID),
-    name(name),
+    nodeName(name),
     type(type)
 {
 }
 
-CantFindValidParentException::CantFindValidParentException(QString functionName, QString parentName, QString name, Type type):
-    TreeException(functionName),
+CantFindValidParentException::CantFindValidParentException(const Node* root, const QString& parentName, const QString& name, const Type& type):
+    TreeException(root),
     parentName(parentName),
-    name(name),
+    nodeName(name),
     type(type)
 {
 
 }
 
-QString CantFindValidParentException::what()
+QString CantFindValidParentException::what() const
 {
     return TreeException::what()
             + " Can't find parent with ID = " + QString::number(parentID)
-            + ". Name = " + name
+            + ". Name = " + nodeName
             + " type = " + getFriendlyName(type) +  ".";
 }
 
-int CantFindValidParentException::getParentID()
+int CantFindValidParentException::getParentID() const
 {
     return parentID;
 }
 
-QString CantFindValidParentException::getName()
+QString CantFindValidParentException::getNodeName() const
 {
-    return name;
+    return nodeName;
 }
 
-Type CantFindValidParentException::getType()
+Type CantFindValidParentException::getType() const
 {
     return type;
 }
 
-CantFindNodeToDeleteException::CantFindNodeToDeleteException() :
-    TreeException(),
-    id(0)
+CantFindValidParentException::~CantFindValidParentException()
 {
 }
 
-CantFindNodeToDeleteException::CantFindNodeToDeleteException(QString functionName, int id) :
-    TreeException(functionName),
+CantFindNodeToDeleteException::CantFindNodeToDeleteException(const Node* root, const int id) :
+    TreeException(root),
     id(id)
 {
 }
 
-QString CantFindNodeToDeleteException::what()
+QString CantFindNodeToDeleteException::what() const
 {
     return TreeException::what()
             + " Can't find node with ID = " + QString::number(id)
             + " to delete.";
 }
 
-int CantFindNodeToDeleteException::getId()
+int CantFindNodeToDeleteException::getId() const
 {
     return id;
+}
+
+CantFindNodeToDeleteException::~CantFindNodeToDeleteException()
+{
 }
