@@ -35,6 +35,8 @@ private:
     int timerId;
     TreeNode *centerNode;
 
+    TreeNode* drawTreeNode(Node*);
+
 signals:
     void nodeClicked(Node*);
 };

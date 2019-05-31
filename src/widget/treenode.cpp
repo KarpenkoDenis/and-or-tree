@@ -84,7 +84,7 @@ bool TreeNode::advancePosition()
 
 QRectF TreeNode::boundingRect() const
 {
-    qreal adjust = 2;
+    qreal adjust = 50;
     return QRectF( -10 - adjust, -10 - adjust, 23 + adjust, 23 + adjust);
 }
 
@@ -115,6 +115,8 @@ void TreeNode::paint(QPainter *painter, const QStyleOptionGraphicsItem *option, 
 
     painter->setPen(QPen(Qt::black, 0));
     painter->drawEllipse(-10, -10, 20, 20);
+
+    painter->drawText(-10, -10, node->getName());
 }
 
 QVariant TreeNode::itemChange(GraphicsItemChange change, const QVariant &value)
@@ -150,7 +152,7 @@ Node *TreeNode::getNode() const
     return node;
 }
 
-void TreeNode::setNode(Node *value)
+void TreeNode::setNode(Node *node)
 {
-    node = value;
+    this->node = node;
 }

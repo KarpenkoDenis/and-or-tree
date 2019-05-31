@@ -23,52 +23,68 @@ GraphWidget::GraphWidget(QWidget *parent)
     setMinimumSize(400, 400);
     setWindowTitle(tr("Elastic Nodes"));
 
-//    TreeNode *node1 = new TreeNode(this);
-//    TreeNode *node2 = new TreeNode(this);
-//    TreeNode *node3 = new TreeNode(this);
-//    TreeNode *node4 = new TreeNode(this);
-//    centerNode = new TreeNode(this);
-//    TreeNode *node6 = new TreeNode(this);
-//    TreeNode *node7 = new TreeNode(this);
-//    TreeNode *node8 = new TreeNode(this);
-//    TreeNode *node9 = new TreeNode(this);
-//    TreeNode *node10 = new TreeNode(this);
-//    scene->addItem(node1);
-//    scene->addItem(node2);
-//    scene->addItem(node3);
-//    scene->addItem(node4);
-//    scene->addItem(centerNode);
-//    scene->addItem(node6);
-//    scene->addItem(node7);
-//    scene->addItem(node8);
-//    scene->addItem(node9);
-//    scene->addItem(node10);
-//    scene->addItem(new Edge(node2, centerNode));
-//    scene->addItem(new Edge(node3, node6));
-//    scene->addItem(new Edge(node4, node1));
-//    scene->addItem(new Edge(node4, centerNode));
-//    scene->addItem(new Edge(centerNode, node6));
-//    scene->addItem(new Edge(node6, node9));
-//    scene->addItem(new Edge(node7, node4));
-//    scene->addItem(new Edge(node8, node7));
-//    scene->addItem(new Edge(node9, node8));
-//    scene->addItem(new Edge(node9, node10));
-//    node1->setPos(-50, -50);
-//    node2->setPos(0, -50);
-//    node3->setPos(50, -50);
-//    node4->setPos(-50, 0);
-//    centerNode->setPos(0, 0);
-//    node6->setPos(50, 0);
-//    node7->setPos(-50, 50);
-//    node8->setPos(0, 50);
+    //    TreeNode *node1 = new TreeNode(this);
+    //    TreeNode *node2 = new TreeNode(this);
+    //    TreeNode *node3 = new TreeNode(this);
+    //    TreeNode *node4 = new TreeNode(this);
+    //    centerNode = new TreeNode(this);
+    //    TreeNode *node6 = new TreeNode(this);
+    //    TreeNode *node7 = new TreeNode(this);
+    //    TreeNode *node8 = new TreeNode(this);
+    //    TreeNode *node9 = new TreeNode(this);
+    //    TreeNode *node10 = new TreeNode(this);
+    //    scene->addItem(node1);
+    //    scene->addItem(node2);
+    //    scene->addItem(node3);
+    //    scene->addItem(node4);
+    //    scene->addItem(centerNode);
+    //    scene->addItem(node6);
+    //    scene->addItem(node7);
+    //    scene->addItem(node8);
+    //    scene->addItem(node9);
+    //    scene->addItem(node10);
+    //    scene->addItem(new Edge(node2, centerNode));
+    //    scene->addItem(new Edge(node3, node6));
+    //    scene->addItem(new Edge(node4, node1));
+    //    scene->addItem(new Edge(node4, centerNode));
+    //    scene->addItem(new Edge(centerNode, node6));
+    //    scene->addItem(new Edge(node6, node9));
+    //    scene->addItem(new Edge(node7, node4));
+    //    scene->addItem(new Edge(node8, node7));
+    //    scene->addItem(new Edge(node9, node8));
+    //    scene->addItem(new Edge(node9, node10));
+    //    node1->setPos(-50, -50);
+    //    node2->setPos(0, -50);
+    //    node3->setPos(50, -50);
+    //    node4->setPos(-50, 0);
+    //    centerNode->setPos(0, 0);
+    //    node6->setPos(50, 0);
+    //    node7->setPos(-50, 50);
+    //    node8->setPos(0, 50);
     //    node9->setPos(50, 50);
 }
 
 void GraphWidget::configure(Tree *tree)
 {
-    TreeNode *node1 = new TreeNode(this);
-    node1->setNode(&(tree->root));
-    this->scene()->addItem(node1);
+    drawTreeNode(&(tree->root));
+}
+
+TreeNode* GraphWidget::drawTreeNode(Node *node)
+{
+    TreeNode *treeNode = new TreeNode(this);
+    treeNode->setNode(node);
+    treeNode->setPos(0,-500);
+    this->scene()->addItem(treeNode);
+
+    TreeNode* childTreeNode;
+    for(auto iter = node->children.begin(); iter!=node->children.end(); ++iter)
+    {
+        childTreeNode = drawTreeNode(&(*iter));
+        this->scene()->addItem(new Edge(treeNode, childTreeNode));
+
+    }
+
+    return treeNode;
 }
 
 void GraphWidget::itemMoved()

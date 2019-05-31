@@ -68,8 +68,8 @@ void MainWindow::initializeWidget(){
     ui->setupUi(this);
 
     nodeEditor = new NodeEditor();
-    nodeTreeGraph = new NodeTreeGraph();
     graphWidget = new GraphWidget();
+
     searchCriteriaBoxLayout = new SearchCriteriaBoxLayout();
     searchResultBoxLayout = new SearchResultBoxLayout();
     listViewBoxLayout = new ListViewBoxLayout();
