@@ -8,7 +8,8 @@
 #include "widget/graphwidget.h"
 #include "widget/nodetreegraph.h"
 #include "widget/search/searchcriteriaboxlayout.h"
-#include "widget/list/listviewboxlayout.h"
+#include "widget/search/searchresultboxlayout.h"
+#include "widget/listview/listviewboxlayout.h"
 #include "container/domain/tree.h"
 
 namespace Ui {
@@ -30,6 +31,7 @@ private:
 
     NodeEditor *nodeEditor = nullptr;
     SearchCriteriaBoxLayout *searchCriteriaBoxLayout = nullptr;
+    SearchResultBoxLayout *searchResultBoxLayout = nullptr;
     ListViewBoxLayout *listViewBoxLayout = nullptr;
     GraphWidget *graphWidget = nullptr;
     NodeTreeGraph *nodeTreeGraph = nullptr;
@@ -39,7 +41,6 @@ private:
     void restoreState();
 
 public slots:
-    void addListLine(Tree tree);
     void openEditor(Tree *tree);
     void handleAddTreeButtonClick();
     void handleAddSearchCriteriaButtonClick();

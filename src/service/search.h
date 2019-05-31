@@ -5,5 +5,5 @@
 #include <QVector>
 #include <QMap>
 
-QVector<int> findTrees(QVector<Tree> trees, QMap<QString, QString> properties);
-QMap<QString, QList<QString>> findProperties(QVector<Tree> trees);
+QVector<Tree*> findTrees(QVector<Tree*> trees, QMap<QString, QString> properties);
+QMap<QString, QList<QString>> findProperties(QVector<Tree*> trees);

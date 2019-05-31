@@ -46,10 +46,12 @@ StateManager::StateManager(QObject *parent) : QObject(parent)
 StateManager::~StateManager()
 {
     serializeState();
+    for(auto tree : trees) {
+        delete tree;
+    }
 }
 
-
-QVector<Tree> StateManager::getTrees() const
+QVector<Tree*> StateManager::getTrees()
 {
     return trees;
 }
@@ -62,7 +64,7 @@ void StateManager::serializeState()
     QDataStream out(&file);
     out << (qint32)trees.count();
 
-    for(const Tree& tree : trees)
+    for(auto tree : trees)
     {
         out << tree;
     }
@@ -80,10 +82,10 @@ void StateManager::deserializeState()
         in >> treeCount;
         for(int i = 0; i < treeCount; i++)
         {
-            Tree tree;
-            in >> tree;
+            Tree* tree = new Tree();
+            in >> *tree;
             trees.append(tree);
-            qDebug() << "Tree with name '" + tree.getName() + "' was restored.";
+            qDebug() << "Tree with name '" + tree->getName() + "' was restored.";
             emit treeCreated();
         }
     }
@@ -91,10 +93,16 @@ void StateManager::deserializeState()
 
 void StateManager::createTree(const QString &name)
 {
-    Tree tree;
-    tree.setName(name);
+    Tree* tree = new Tree();
+    tree->setName(name);
     trees.append(tree);
     qDebug() << "Tree with name '" + name + "' was created.";
 
     emit treeCreated();
+}
+
+void StateManager::removeTree(Tree *tree)
+{
+    trees.removeAt(trees.indexOf(tree));
+    emit treeRemoved();
 }

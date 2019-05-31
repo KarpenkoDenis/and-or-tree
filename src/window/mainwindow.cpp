@@ -1,11 +1,11 @@
 #include "mainwindow.h"
 #include "addtreepopup.h"
 #include "ui_mainwindow.h"
-#include "widget/listlinewidget.h"
 #include "widget/search/searchcriteriawidget.h"
 #include "service/search.h"
 #include <QLayoutItem>
 #include <QDebug>
+#include <QLabel>
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
@@ -25,6 +25,7 @@ MainWindow::~MainWindow()
     delete nodeEditor;
     delete stateManager;
     delete searchCriteriaBoxLayout;
+    delete searchResultBoxLayout;
 }
 
 void MainWindow::handleAddTreeButtonClick()
@@ -40,7 +41,7 @@ void MainWindow::openEditor(Tree *tree)
 
 void MainWindow::handleAddSearchCriteriaButtonClick()
 {
-    QVector<Tree> trees = stateManager->getTrees();
+    QVector<Tree*> trees = stateManager->getTrees();
     QMap<QString, QList<QString>> possibleSearchCriteria = findProperties(trees);
     searchCriteriaBoxLayout->addSearchCriteriaWidget(new SearchCriteriaWidget(possibleSearchCriteria));
 }
@@ -48,9 +49,8 @@ void MainWindow::handleAddSearchCriteriaButtonClick()
 void MainWindow::handleSearchButtonClick()
 {
     QMap<QString, QString> searchCriteria = searchCriteriaBoxLayout->getSearchCriteria();
-
-    // tree list
-    // populate trees to table
+    QVector<Tree*> searchResult = findTrees(stateManager->getTrees(), searchCriteria);
+    searchResultBoxLayout->configure(searchResult);
 }
 
 void MainWindow::handleCloseEditorButtonClick()
@@ -71,6 +71,7 @@ void MainWindow::initializeWidget(){
     nodeTreeGraph = new NodeTreeGraph();
     graphWidget = new GraphWidget();
     searchCriteriaBoxLayout = new SearchCriteriaBoxLayout();
+    searchResultBoxLayout = new SearchResultBoxLayout();
     listViewBoxLayout = new ListViewBoxLayout();
 
     ui->editorLayout->addWidget(nodeEditor);
@@ -79,6 +80,9 @@ void MainWindow::initializeWidget(){
     ui->searchCriteriaBoxLayoutWrapper->addStretch(1);
     ui->listViewBoxLayoutWrapper->addLayout(listViewBoxLayout);
     ui->listViewBoxLayoutWrapper->addStretch(1);
+
+    ui->searchResultBoxLayoutWrapper->addLayout(searchResultBoxLayout);
+    ui->searchResultBoxLayoutWrapper->addStretch(1);
 }
 
 void MainWindow::defineConnects(){
@@ -87,12 +91,16 @@ void MainWindow::defineConnects(){
     QObject::connect(ui->searchButton, SIGNAL(clicked(bool)), this, SLOT(handleSearchButtonClick()));
     QObject::connect(ui->closeEditorButton, SIGNAL(clicked(bool)), this, SLOT(handleCloseEditorButtonClick()));
 
+    QObject::connect(listViewBoxLayout, SIGNAL(shouldOpenTreeEditor(Tree*)), this, SLOT(openEditor(Tree*)));
+    QObject::connect(listViewBoxLayout, SIGNAL(shouldRemoveTree(Tree*)), stateManager, SLOT(removeTree(Tree*)));
+
     QObject::connect(addTreePopup, SIGNAL(createTree(QString)), stateManager, SLOT(createTree(QString)));
-    QObject::connect(stateManager, SIGNAL(treeCreated()), this, SLOT(refreshLishView()));
+    QObject::connect(stateManager, SIGNAL(treeCreated()), this, SLOT(refreshListView()));
+    QObject::connect(stateManager, SIGNAL(treeRemoved()), this, SLOT(refreshListView()));
     QObject::connect(graphWidget, SIGNAL(nodeClicked(Node*)), nodeEditor, SLOT(configure(Node*)));
 }
 
 void MainWindow::restoreState()
 {
-//    stateManager->deserializeState();
+    //    stateManager->deserializeState();
 }

@@ -9,22 +9,24 @@ class StateManager : public QObject
     Q_OBJECT
 
 private:
-    QVector<Tree> trees;
+    QVector<Tree*> trees;
 
 public:
     explicit StateManager(QObject *parent = nullptr);
     ~StateManager();
 
-    QVector<Tree> getTrees() const;
+    QVector<Tree*> getTrees();
     void serializeState();
     void deserializeState();
 
+
 signals:
     void treeCreated();
+    void treeRemoved();
 
 public slots:
     void createTree(const QString &name);
-
+    void removeTree(Tree *);
 };
 
 #endif // STATEMANAGER_H

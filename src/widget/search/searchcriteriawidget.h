@@ -23,9 +23,11 @@ private:
 
     void initializeWidget(QMap<QString, QList<QString>> possibleSearchCriteria);
     void configureConnects();
-
+signals:
+    void shouldRemoveSearchCriteria(SearchCriteriaWidget*);
 public slots:
     void handleSearchCriteriaTypeSelect(QString);
+    void handleRemoveSearchCriteriaButtonClick();
 };
 
 #endif // SEARCHCRITERIAWIDGET_H

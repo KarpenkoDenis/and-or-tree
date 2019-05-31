@@ -49,6 +49,7 @@ void SearchCriteriaWidget::initializeWidget(QMap<QString, QList<QString>> possib
 void SearchCriteriaWidget::configureConnects()
 {
     QObject::connect(this->searchCriteriaTypeComboBox, SIGNAL(currentIndexChanged(QString)), this, SLOT(handleSearchCriteriaTypeSelect(QString)));
+    QObject::connect(this->removeSearchCriteriaButton, SIGNAL(clicked()), this, SLOT(handleRemoveSearchCriteriaButtonClick()));
 }
 
 void SearchCriteriaWidget::handleSearchCriteriaTypeSelect(QString typeName)
@@ -56,4 +57,9 @@ void SearchCriteriaWidget::handleSearchCriteriaTypeSelect(QString typeName)
     searchCriteriaValueComboBox->clear();
     searchCriteriaValueComboBox->addItems(possibleSearchCriteria[typeName]);
     searchCriteriaValueComboBox->setCurrentIndex(0);
+}
+
+void SearchCriteriaWidget::handleRemoveSearchCriteriaButtonClick()
+{
+    emit shouldRemoveSearchCriteria(this);
 }
