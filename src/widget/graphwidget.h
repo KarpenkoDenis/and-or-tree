@@ -13,32 +13,17 @@ class GraphWidget : public QGraphicsView
 public:
     GraphWidget(QWidget *parent = nullptr);
     void configure(Tree*);
-    void itemMoved();
-    void handleNodeClick(Node*);
-
-public slots:
-    void shuffle();
-    void zoomIn();
-    void zoomOut();
-
-protected:
-    void keyPressEvent(QKeyEvent *event) override;
-    void timerEvent(QTimerEvent *event) override;
-#if QT_CONFIG(wheelevent)
-    void wheelEvent(QWheelEvent *event) override;
-#endif
-    void drawBackground(QPainter *painter, const QRectF &rect) override;
-
-    void scaleView(qreal scaleFactor);
 
 private:
-    int timerId;
-    TreeNode *centerNode;
-
-    TreeNode* drawTreeNode(Node*);
+    TreeNode* drawTreeNode(Node*, int, int, int);
+    Tree* tree = nullptr;
 
 signals:
-    void nodeClicked(Node*);
+    void shouldChangeNodeEditor(Node*);
+
+public slots:
+    void handleTreeNodeClick(Node*);
+    void refreshWidget();
 };
 
 #endif // GRAPHWIDGET_H

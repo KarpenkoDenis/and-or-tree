@@ -27,7 +27,6 @@ private:
 
     QPointF sourcePoint;
     QPointF destPoint;
-    qreal arrowSize;
 };
 
 #endif // EDGE_H
