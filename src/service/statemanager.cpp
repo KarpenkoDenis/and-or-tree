@@ -30,9 +30,10 @@ void StateManager::serializeState()
     QDataStream out(&file);
     out << (qint32)trees.count();
 
+
     for(auto tree : trees)
     {
-        out << tree;
+        out << *tree;
     }
 }
 

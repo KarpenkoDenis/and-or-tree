@@ -7,6 +7,8 @@
 #include "container/exception/treeexception.h"
 
 class TreeIterator;
+//template <class T>
+//class Node<T>;
 
 #include "container/treeiterator.h"
 
@@ -14,7 +16,7 @@ class Tree
 {
 public:
     Tree();
-    Node root;
+    Node<QString> root;
     QString name;
 
     void addNode( int parentID, QString name, Type t);
@@ -22,7 +24,7 @@ public:
     void clear();
     int size();
 //    Node *find(QString name);
-    Node * findKLP_next_by(Node *);
+    Node<QString> * findKLP_next_by(Node<QString> *);
 
     //for iterator
 public:
@@ -44,7 +46,7 @@ public:
     void setName(const QString &value);
 
     QString getName() const;
-    Node getRoot() const;
+    Node<QString> getRoot() const;
 
     friend QDataStream& operator<<(QDataStream& os, const Tree& tree);
     friend QDataStream& operator>>(QDataStream& is, Tree& tree);

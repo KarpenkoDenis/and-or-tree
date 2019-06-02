@@ -4,18 +4,18 @@
 #include <vector>
 //#include "tree.h"
 
-
 class Tree;
-class Node;
+//template <class T>
+//class Node<T>;
 
 #include "container/domain/tree.h"
 
 //template<typename Root, typename CurrElem>
-class TreeIterator: public std::iterator<std::input_iterator_tag, Node>
+class TreeIterator: public std::iterator<std::input_iterator_tag, Node<QString>>
 {
     friend class Tree;
 private:
-    TreeIterator(Tree* r, Node* c);
+    TreeIterator(Tree* r, Node<QString>* c);
 public:
     TreeIterator(const TreeIterator &it);
 
@@ -25,11 +25,11 @@ public:
     TreeIterator& operator++();
 private:
     Tree* r;  //переделать на ссылку
-    Node* c;
+    Node<QString>* c;
 
-    Node *findNext(Node *curr, Node finding);
-    void KLP(Node * curr);
-    std::vector<Node *> passed;
+    Node<QString> *findNext(Node<QString> *curr, Node<QString> finding);
+    void KLP(Node<QString> * curr);
+    std::vector<Node<QString> *> passed;
 
 };
 

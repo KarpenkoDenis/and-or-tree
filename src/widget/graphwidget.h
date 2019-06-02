@@ -3,6 +3,7 @@
 
 #include <QGraphicsView>
 #include "container/domain/tree.h"
+#include "container/domain/node.h"
 
 class TreeNode;
 
@@ -15,14 +16,14 @@ public:
     void configure(Tree*);
 
 private:
-    TreeNode* drawTreeNode(Node*, int, int, int);
+    TreeNode* drawTreeNode(Node<QString>*, int, int, int);
     Tree* tree = nullptr;
 
 signals:
-    void shouldChangeNodeEditor(Node*);
+    void shouldChangeNodeEditor(Node<QString>*);
 
 public slots:
-    void handleTreeNodeClick(Node*);
+    void handleTreeNodeClick(Node<QString>*);
     void refreshWidget();
 };
 

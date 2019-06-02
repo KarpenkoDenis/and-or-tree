@@ -20,10 +20,17 @@ NodeEditor::~NodeEditor()
     delete nodeTypeComboBox;
 }
 
-void NodeEditor::configure(Node *node)
+void NodeEditor::configure(Node<QString> *node)
 {
     currentNode = node;
     nodeNameLineEdit->setText(currentNode->getName());
+    if(currentNode->getType() == And)
+    {
+        nodeTypeComboBox->setCurrentIndex(1);
+    }
+    else {
+        nodeTypeComboBox->setCurrentIndex(0);
+    }
     // TODO set value to combobox
 }
 
@@ -50,10 +57,12 @@ void NodeEditor::handleNodeTypeComboBoxChange(int index)
 
 void NodeEditor::handleAddChildNodeButtonClick()
 {
-    qDebug() << "AddChildNodeButton handler";
-    currentNode->addNode("Новый узел", Type::And);
+    if (currentNode) {
+        qDebug() << "AddChildNodeButton handler";
+        currentNode->addNode("Новый узел", Type::And);
 
-    emit shouldRefreshGraphWidget();
+        emit shouldRefreshGraphWidget();
+    }
 }
 
 void NodeEditor::initializeLayout()

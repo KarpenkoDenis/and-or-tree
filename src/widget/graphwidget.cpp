@@ -21,7 +21,7 @@ void GraphWidget::configure(Tree *tree)
     drawTreeNode(&(tree->root), 0, -300, 300);
 }
 
-TreeNode* GraphWidget::drawTreeNode(Node *node, int level, int w1, int w2)
+TreeNode* GraphWidget::drawTreeNode(Node<QString> *node, int level, int w1, int w2)
 {
     TreeNode *treeNode = new TreeNode();
     treeNode->setNode(node);
@@ -39,11 +39,11 @@ TreeNode* GraphWidget::drawTreeNode(Node *node, int level, int w1, int w2)
         sectorCounter++;
     }
 
-    QObject::connect(treeNode, SIGNAL(treeNodeClicked(Node*)), this, SLOT(handleTreeNodeClick(Node*)));
+    QObject::connect(treeNode, SIGNAL(treeNodeClicked(Node<QString>*)), this, SLOT(handleTreeNodeClick(Node<QString>*)));
     return treeNode;
 }
 
-void GraphWidget::handleTreeNodeClick(Node *node)
+void GraphWidget::handleTreeNodeClick(Node<QString> *node)
 {
     emit shouldChangeNodeEditor(node);
 }

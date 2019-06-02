@@ -7,6 +7,8 @@
 class Edge;
 class GraphWidget;
 class QGraphicsSceneMouseEvent;
+//template <class T>
+//class Node<T>;
 
 class TreeNode : public QObject, public QGraphicsItem
 {
@@ -20,16 +22,21 @@ public:
     QPainterPath shape() const override;
     void paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget) override;
 
-    Node *getNode() const;
-    void setNode(Node *value);
+    Node<QString> *getNode() const;
+    void setNode(Node<QString> *value);
 
 protected:
     void mousePressEvent(QGraphicsSceneMouseEvent *event) override;
 
 private:
-    Node *node;
+
+    QList<Edge *> edgeList;
+    QPointF newPos;
+    GraphWidget *graph;
+    Node<QString> *node;
 
 signals:
-    void treeNodeClicked(Node*);
+    void treeNodeClicked(Node<QString>*);
+
 };
 #endif // TREENODE_H
