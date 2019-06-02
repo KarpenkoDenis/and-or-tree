@@ -19,7 +19,6 @@ public:
     void serializeState();
     void deserializeState();
 
-
 signals:
     void treeCreated();
     void treeRemoved();

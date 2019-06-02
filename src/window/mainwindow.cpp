@@ -68,8 +68,8 @@ void MainWindow::initializeWidget(){
     ui->setupUi(this);
 
     nodeEditor = new NodeEditor();
-    nodeTreeGraph = new NodeTreeGraph();
     graphWidget = new GraphWidget();
+
     searchCriteriaBoxLayout = new SearchCriteriaBoxLayout();
     searchResultBoxLayout = new SearchResultBoxLayout();
     listViewBoxLayout = new ListViewBoxLayout();
@@ -97,10 +97,12 @@ void MainWindow::defineConnects(){
     QObject::connect(addTreePopup, SIGNAL(createTree(QString)), stateManager, SLOT(createTree(QString)));
     QObject::connect(stateManager, SIGNAL(treeCreated()), this, SLOT(refreshListView()));
     QObject::connect(stateManager, SIGNAL(treeRemoved()), this, SLOT(refreshListView()));
-    QObject::connect(graphWidget, SIGNAL(nodeClicked(Node*)), nodeEditor, SLOT(configure(Node*)));
+    QObject::connect(graphWidget, SIGNAL(shouldChangeNodeEditor(Node*)), nodeEditor, SLOT(configure(Node*)));
+
+    QObject::connect(nodeEditor, SIGNAL(shouldRefreshGraphWidget()), graphWidget, SLOT(refreshWidget()));
 }
 
 void MainWindow::restoreState()
 {
-    //    stateManager->deserializeState();
+    stateManager->deserializeState();
 }

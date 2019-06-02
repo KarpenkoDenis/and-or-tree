@@ -24,17 +24,20 @@ private:
     QLineEdit *nodeNameLineEdit = nullptr;
     QComboBox *nodeTypeComboBox = nullptr;
     QPushButton *addChildNodeButton = nullptr;
-    QPushButton *saveNodeButton = nullptr;
 
     void initializeLayout();
     void defineConnects();
 
 signals:
+    void shouldRefreshGraphWidget();
 
 public slots:
     void handleAddChildNodeButtonClick();
+
     void handleSaveNodeButtonClick();
     void configure(Node<QString> *node);
+    void handleNodeNameLineEditChange(QString);
+    void handleNodeTypeComboBoxChange(int);
 };
 
 #endif // NODEEDITOR_H

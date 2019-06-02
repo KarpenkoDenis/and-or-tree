@@ -4,9 +4,8 @@
 #include <QMainWindow>
 #include "addtreepopup.h"
 #include "service/statemanager.h"
-#include "widget/nodeeditor.h"
+#include "widget/editor/nodeeditor.h"
 #include "widget/graphwidget.h"
-#include "widget/nodetreegraph.h"
 #include "widget/search/searchcriteriaboxlayout.h"
 #include "widget/search/searchresultboxlayout.h"
 #include "widget/listview/listviewboxlayout.h"
@@ -23,18 +22,17 @@ class MainWindow : public QMainWindow
 public:
     explicit MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
-    StateManager *stateManager = nullptr;
+
 
 private:
     Ui::MainWindow *ui = nullptr;
     AddTreePopup *addTreePopup = nullptr;
-
+    StateManager *stateManager = nullptr;
     NodeEditor *nodeEditor = nullptr;
     SearchCriteriaBoxLayout *searchCriteriaBoxLayout = nullptr;
     SearchResultBoxLayout *searchResultBoxLayout = nullptr;
     ListViewBoxLayout *listViewBoxLayout = nullptr;
     GraphWidget *graphWidget = nullptr;
-    NodeTreeGraph *nodeTreeGraph = nullptr;
 
     void initializeWidget();
     void defineConnects();

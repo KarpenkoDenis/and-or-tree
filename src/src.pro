@@ -36,8 +36,7 @@ SOURCES += \
         widget/graphwidget.cpp \
         widget/listview/listlinewidget.cpp \
         widget/listview/listviewboxlayout.cpp \
-        widget/nodeeditor.cpp \
-        widget/nodetreegraph.cpp \
+        widget/editor/nodeeditor.cpp \
         widget/search/searchcriteriaboxlayout.cpp \
         widget/search/searchcriteriawidget.cpp \
         widget/search/searchresultboxlayout.cpp \
@@ -57,8 +56,7 @@ HEADERS += \
         widget/graphwidget.h \
         widget/listview/listlinewidget.h \
         widget/listview/listviewboxlayout.h \
-        widget/nodeeditor.h \
-        widget/nodetreegraph.h \
+        widget/editor/nodeeditor.h \
         widget/search/searchcriteriaboxlayout.h \
         widget/search/searchcriteriawidget.h \
         widget/search/searchresultboxlayout.h \

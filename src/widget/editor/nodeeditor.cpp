@@ -27,16 +27,33 @@ void NodeEditor::configure(Node<QString> *node)
     // TODO set value to combobox
 }
 
+void NodeEditor::handleNodeNameLineEditChange(QString name)
+{
+    if (currentNode) {
+        currentNode->setName(name);
+        emit shouldRefreshGraphWidget();
+    }
+}
+
+void NodeEditor::handleNodeTypeComboBoxChange(int index)
+{
+    if (currentNode) {
+        if (index) {
+            currentNode->setType(And);
+        } else {
+            currentNode->setType(Or);
+        }
+        emit shouldRefreshGraphWidget();
+    }
+
+}
+
 void NodeEditor::handleAddChildNodeButtonClick()
 {
     qDebug() << "AddChildNodeButton handler";
-    currentNode->addNode("default", Type::And);
-}
+    currentNode->addNode("Новый узел", Type::And);
 
-void NodeEditor::handleSaveNodeButtonClick()
-{
-    // TODO implement saving
-    qDebug() << "SaveNodeButton handler";
+    emit shouldRefreshGraphWidget();
 }
 
 void NodeEditor::initializeLayout()
@@ -46,7 +63,6 @@ void NodeEditor::initializeLayout()
     nodeTypeComboBox->addItem("Или");
     nodeTypeComboBox->addItem("И");
     addChildNodeButton = new QPushButton("Добавить дочерний узел");
-    saveNodeButton = new QPushButton("Сохранить узел");
 
     auto layout = new QVBoxLayout();
 
@@ -54,7 +70,6 @@ void NodeEditor::initializeLayout()
     layout->addWidget(nodeNameLineEdit);
     layout->addWidget(nodeTypeComboBox);
     layout->addWidget(addChildNodeButton);
-    layout->addWidget(saveNodeButton);
     layout->addStretch(1);
 
     this->setLayout(layout);
@@ -62,7 +77,9 @@ void NodeEditor::initializeLayout()
 
 void NodeEditor::defineConnects()
 {
+    QObject::connect(nodeNameLineEdit, SIGNAL(textChanged(QString)), this, SLOT(handleNodeNameLineEditChange(QString)));
+    QObject::connect(nodeTypeComboBox, SIGNAL(currentIndexChanged(int)), this, SLOT(handleNodeTypeComboBoxChange(int)));
     QObject::connect(addChildNodeButton, SIGNAL(clicked()), this, SLOT(handleAddChildNodeButtonClick()));
-    QObject::connect(saveNodeButton, SIGNAL(clicked()), this, SLOT(handleSaveNodeButtonClick()));
+
 }
 
