@@ -3,6 +3,7 @@
 
 #include <QGraphicsView>
 #include "container/domain/tree.h"
+#include "container/domain/node.h"
 
 class TreeNode;
 
@@ -13,30 +14,17 @@ class GraphWidget : public QGraphicsView
 public:
     GraphWidget(QWidget *parent = nullptr);
     void configure(Tree*);
-    void itemMoved();
-    void handleNodeClick(Node<QString>*);
-
-public slots:
-    void shuffle();
-    void zoomIn();
-    void zoomOut();
-
-protected:
-    void keyPressEvent(QKeyEvent *event) override;
-    void timerEvent(QTimerEvent *event) override;
-#if QT_CONFIG(wheelevent)
-    void wheelEvent(QWheelEvent *event) override;
-#endif
-    void drawBackground(QPainter *painter, const QRectF &rect) override;
-
-    void scaleView(qreal scaleFactor);
 
 private:
-    int timerId;
-    TreeNode *centerNode;
+    TreeNode* drawTreeNode(Node<QString>*, int, int, int);
+    Tree* tree = nullptr;
 
 signals:
-    void nodeClicked(Node<QString>*);
+    void shouldChangeNodeEditor(Node<QString>*);
+
+public slots:
+    void handleTreeNodeClick(Node<QString>*);
+    void refreshWidget();
 };
 
 #endif // GRAPHWIDGET_H

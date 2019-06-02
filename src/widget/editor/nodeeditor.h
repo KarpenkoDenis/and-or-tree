@@ -33,8 +33,6 @@ signals:
 
 public slots:
     void handleAddChildNodeButtonClick();
-
-    void handleSaveNodeButtonClick();
     void configure(Node<QString> *node);
     void handleNodeNameLineEditChange(QString);
     void handleNodeTypeComboBoxChange(int);

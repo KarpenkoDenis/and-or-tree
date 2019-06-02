@@ -52,7 +52,7 @@ Node<QString> *TreeNode::getNode() const
 }
 
 
-void TreeNode::setNode(Node<QString> *value)
+void TreeNode::setNode(Node<QString> *node)
 {
     this->node = node;
 }

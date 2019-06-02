@@ -16,23 +16,12 @@ GraphWidget::GraphWidget(QWidget *parent)
 
 void GraphWidget::configure(Tree *tree)
 {
-    TreeNode *node1 = new TreeNode(this);
-    node1->setNode(&(tree->root));
-    this->scene()->addItem(node1);
+    this->tree = tree;
+    scene()->clear();
+    drawTreeNode(&(tree->root), 0, -300, 300);
 }
 
-void GraphWidget::itemMoved()
-{
-    if (!timerId)
-        timerId = startTimer(1000 / 25);
-}
-
-void GraphWidget::handleNodeClick(Node<QString> *node)
-{
-    emit nodeClicked(node);
-}
-
-TreeNode* GraphWidget::drawTreeNode(Node *node, int level, int w1, int w2)
+TreeNode* GraphWidget::drawTreeNode(Node<QString> *node, int level, int w1, int w2)
 {
     TreeNode *treeNode = new TreeNode();
     treeNode->setNode(node);
@@ -50,11 +39,11 @@ TreeNode* GraphWidget::drawTreeNode(Node *node, int level, int w1, int w2)
         sectorCounter++;
     }
 
-    QObject::connect(treeNode, SIGNAL(treeNodeClicked(Node*)), this, SLOT(handleTreeNodeClick(Node*)));
+    QObject::connect(treeNode, SIGNAL(treeNodeClicked(Node<QString>*)), this, SLOT(handleTreeNodeClick(Node<QString>*)));
     return treeNode;
 }
 
-void GraphWidget::handleTreeNodeClick(Node *node)
+void GraphWidget::handleTreeNodeClick(Node<QString> *node)
 {
     emit shouldChangeNodeEditor(node);
 }
