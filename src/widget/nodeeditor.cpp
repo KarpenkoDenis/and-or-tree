@@ -20,7 +20,7 @@ NodeEditor::~NodeEditor()
     delete nodeTypeComboBox;
 }
 
-void NodeEditor::configure(Node *node)
+void NodeEditor::configure(Node<QString> *node)
 {
     currentNode = node;
     nodeNameLineEdit->setText(currentNode->getName());

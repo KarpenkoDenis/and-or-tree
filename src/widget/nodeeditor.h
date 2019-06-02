@@ -9,6 +9,8 @@
 #include <QVBoxLayout>
 #include <QComboBox>
 
+//template <class T>
+//class Node<T>;
 class NodeEditor : public QWidget
 {
     Q_OBJECT
@@ -18,7 +20,7 @@ public:
     ~NodeEditor();
 
 private:
-    Node *currentNode = nullptr;
+    Node<QString> *currentNode = nullptr;
     QLineEdit *nodeNameLineEdit = nullptr;
     QComboBox *nodeTypeComboBox = nullptr;
     QPushButton *addChildNodeButton = nullptr;
@@ -32,7 +34,7 @@ signals:
 public slots:
     void handleAddChildNodeButtonClick();
     void handleSaveNodeButtonClick();
-    void configure(Node *node);
+    void configure(Node<QString> *node);
 };
 
 #endif // NODEEDITOR_H

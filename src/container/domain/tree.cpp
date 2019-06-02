@@ -6,7 +6,7 @@ Tree::Tree()
     this->root.setType(And);
 }
 
-Node Tree::getRoot() const
+Node<QString> Tree::getRoot() const
 {
     return root;
 }
@@ -43,7 +43,7 @@ void Tree::deleteNode(int id)
 
 void Tree::clear()
 {
-    root = Node();
+    root = Node<QString>();
 }
 
 qint32 Tree::size()
@@ -74,7 +74,7 @@ Tree::iterator Tree::begin()
 
 Tree::iterator Tree::end()
 {
-    Node * last = &this->root;
+    Node<QString> * last = &this->root;
     while(last->children.size())
     {
         auto save = last->children.end();

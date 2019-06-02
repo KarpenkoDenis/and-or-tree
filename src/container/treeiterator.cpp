@@ -2,7 +2,7 @@
 
 
 
-TreeIterator::TreeIterator(Tree *r, Node *c) :
+TreeIterator::TreeIterator(Tree *r, Node<QString> *c) :
     r(r), c(c)
 {
 
@@ -85,7 +85,7 @@ TreeIterator &TreeIterator::operator++()
     return *this;
 }
 
-Node *TreeIterator::findNext(Node *curr, Node finding)
+Node<QString> *TreeIterator::findNext(Node<QString> *curr, Node<QString> finding)
 {
     KLP(&r->root);
     for(auto iter = passed.begin(); iter!=passed.end(); ++iter)
@@ -99,7 +99,7 @@ Node *TreeIterator::findNext(Node *curr, Node finding)
     return nullptr;
 }
 
-void TreeIterator::KLP(Node *curr)
+void TreeIterator::KLP(Node<QString> *curr)
 {
     passed.push_back(curr);
     for(auto iter = curr->children.begin(); iter!=curr->children.end(); ++iter)

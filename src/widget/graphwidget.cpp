@@ -77,7 +77,7 @@ void GraphWidget::itemMoved()
         timerId = startTimer(1000 / 25);
 }
 
-void GraphWidget::handleNodeClick(Node *node)
+void GraphWidget::handleNodeClick(Node<QString> *node)
 {
     emit nodeClicked(node);
 }

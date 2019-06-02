@@ -1,11 +1,11 @@
 #include "treeexception.h"
 
-TreeException::TreeException(const Node* root) :
+TreeException::TreeException(const Node<QString>* root) :
     root(root)
 {
 }
 
-const Node* TreeException::getRoot() const
+const Node<QString>* TreeException::getRoot() const
 {
     return root;
 }
@@ -19,7 +19,7 @@ QString TreeException::what() const
     return "An error has occured in Tree class!";
 }
 
-CantFindValidParentException::CantFindValidParentException(const Node* root, const int parentID, const QString& name, const Type& type) :
+CantFindValidParentException::CantFindValidParentException(const Node<QString>* root, const int parentID, const QString& name, const Type& type) :
     TreeException(root),
     parentID(parentID),
     nodeName(name),
@@ -27,7 +27,7 @@ CantFindValidParentException::CantFindValidParentException(const Node* root, con
 {
 }
 
-CantFindValidParentException::CantFindValidParentException(const Node* root, const QString& parentName, const QString& name, const Type& type):
+CantFindValidParentException::CantFindValidParentException(const Node<QString>* root, const QString& parentName, const QString& name, const Type& type):
     TreeException(root),
     parentName(parentName),
     nodeName(name),
@@ -63,7 +63,7 @@ CantFindValidParentException::~CantFindValidParentException()
 {
 }
 
-CantFindNodeToDeleteException::CantFindNodeToDeleteException(const Node* root, const int id) :
+CantFindNodeToDeleteException::CantFindNodeToDeleteException(const Node<QString>* root, const int id) :
     TreeException(root),
     id(id)
 {

@@ -14,7 +14,7 @@ public:
     GraphWidget(QWidget *parent = nullptr);
     void configure(Tree*);
     void itemMoved();
-    void handleNodeClick(Node*);
+    void handleNodeClick(Node<QString>*);
 
 public slots:
     void shuffle();
@@ -36,7 +36,7 @@ private:
     TreeNode *centerNode;
 
 signals:
-    void nodeClicked(Node*);
+    void nodeClicked(Node<QString>*);
 };
 
 #endif // GRAPHWIDGET_H

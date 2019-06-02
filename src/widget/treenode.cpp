@@ -145,12 +145,12 @@ void TreeNode::mouseReleaseEvent(QGraphicsSceneMouseEvent *event)
     QGraphicsItem::mouseReleaseEvent(event);
 }
 
-Node *TreeNode::getNode() const
+Node<QString> *TreeNode::getNode() const
 {
     return node;
 }
 
-void TreeNode::setNode(Node *value)
+void TreeNode::setNode(Node<QString> *value)
 {
     node = value;
 }
