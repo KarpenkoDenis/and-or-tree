@@ -4,12 +4,16 @@
 #include <QVector>
 #include "container/domain/tree.h"
 
+#include "container/allocator.h"
+
+//template<typename Alloc = Allocator<Tree<QString>>>
 class StateManager : public QObject
 {
     Q_OBJECT
 
 private:
     QVector<Tree<QString>*> trees;
+    Allocator<Tree<QString>> alloc;
 
 public:
     explicit StateManager(QObject *parent = nullptr);

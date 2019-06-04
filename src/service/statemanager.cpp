@@ -60,7 +60,10 @@ void StateManager::deserializeState()
 
 void StateManager::createTree(const QString &name)
 {
-    Tree<QString>* tree = new Tree<QString>();
+
+//    Tree<QString>* tree = new Tree<QString>();
+    Tree<QString>* tree = alloc.allocate(1);
+    alloc.construct(tree);
     tree->setName(name);
     trees.append(tree);
     qDebug() << "Tree with name '" + name + "' was created.";
@@ -70,6 +73,9 @@ void StateManager::createTree(const QString &name)
 
 void StateManager::removeTree(Tree<QString> *tree)
 {
+    Tree<QString>* treeSave = trees.at(trees.indexOf(tree));
     trees.removeAt(trees.indexOf(tree));
+    alloc.destroy(treeSave);
+    alloc.deallocate(treeSave, 1);
     emit treeRemoved();
 }
