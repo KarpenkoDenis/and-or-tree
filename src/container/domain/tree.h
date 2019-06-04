@@ -128,7 +128,7 @@ qint32 size()
 
 iterator begin()
 {
-    return TreeIterator<T>(this, &root);
+    return TreeIterator<T>(*this, &root);
 //    return iterator(data.get());
 }
 
@@ -141,7 +141,7 @@ iterator end()
         save--;
         last = &*(save);
     }
-    return iterator(this, last);
+    return iterator(*this, last);
 }
 
 };
@@ -169,11 +169,11 @@ class TreeIterator: public std::iterator<std::input_iterator_tag, Node<QString>,
 {
     friend class Tree<T>;
 private:
-    Tree<T>* r;  //переделать на ссылку
+    Tree<T>& r;  //переделать на ссылку
     Node<T>* c;
 
     std::vector<Node<T> *> passed;
-    TreeIterator<T>(Tree<T> *r, Node<T> *c) :
+    TreeIterator<T>(Tree<T> &r, Node<T> *c) :
         r(r), c(c)
     {
 
@@ -203,7 +203,7 @@ TreeIterator<T>(const TreeIterator<T>& it) :
 
 bool operator!=(TreeIterator<T> const& other) const
 {
-    return r != other.r || c != other.c;
+    return /*r != other.r || */c != other.c;
 }
 
 
@@ -226,7 +226,7 @@ TreeIterator<T> &operator++()
         c = save;
     }
     else {
-         c = findNext(&(r->root), *c);
+         c = findNext(&(r.root), *c);
     }
 
     return *this;
@@ -234,7 +234,8 @@ TreeIterator<T> &operator++()
 private:
 Node<T> *findNext(Node<T> *curr, Node<T> finding)
 {
-    KLP(&r->root);
+    passed.clear();
+    KLP(&r.root);
     for(auto iter = passed.begin(); iter!=passed.end(); ++iter)
     {
         if(**iter == finding)
