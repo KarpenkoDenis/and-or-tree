@@ -6,6 +6,8 @@
 
 #include "container/allocator.h"
 
+using namespace TreeContainer;
+
 //template<typename Alloc = Allocator<Tree<QString>>>
 class StateManager : public QObject
 {

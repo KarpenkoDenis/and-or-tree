@@ -9,6 +9,8 @@
 #include <QDebug>
 #include <QDataStream>
 
+namespace TreeContainer {
+
 
 
 enum  Type {And, Or};
@@ -296,4 +298,5 @@ public:
 
 };
 
+}
 #endif // NODE_H

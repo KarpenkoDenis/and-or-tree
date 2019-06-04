@@ -5,7 +5,7 @@
 #include "node.h"
 #include "memory"
 //#include "container/exception/treeexception.h"
-
+namespace TreeContainer {
 template <class T>
 class TreeIterator;
 
@@ -259,4 +259,5 @@ void KLP(Node<T> *curr)
 
 };
 
+}
 #endif // TREE_H

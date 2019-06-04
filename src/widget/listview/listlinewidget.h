@@ -5,6 +5,8 @@
 #include "container/domain/tree.h"
 #include <QPushButton>
 
+using namespace TreeContainer;
+
 class ListLineWidget : public QWidget
 {
     Q_OBJECT

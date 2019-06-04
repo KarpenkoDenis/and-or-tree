@@ -11,6 +11,9 @@
 
 //template <class T>
 //class Node<T>;
+
+using namespace TreeContainer;
+
 class NodeEditor : public QWidget
 {
     Q_OBJECT

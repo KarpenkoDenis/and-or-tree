@@ -5,6 +5,7 @@
 #include <QVBoxLayout>
 #include "searchcriteriawidget.h"
 
+
 class SearchCriteriaBoxLayout : public QVBoxLayout
 {
     Q_OBJECT

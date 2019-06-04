@@ -3,7 +3,9 @@
 
 #include <QGraphicsItem>
 
+
 class TreeNode;
+
 
 class Edge : public QGraphicsItem
 {

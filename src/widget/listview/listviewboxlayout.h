@@ -6,6 +6,8 @@
 
 #include "container/domain/tree.h"
 
+using namespace TreeContainer;
+
 class ListViewBoxLayout : public QVBoxLayout
 {
     Q_OBJECT

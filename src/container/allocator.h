@@ -3,6 +3,7 @@
 
 #include <iostream>
 
+namespace TreeContainer {
 
 template <class T>
 struct Allocator { //lj,fdbnm bcgjkmpjdfybt ( yfcktljdfnm yfghbvgth)
@@ -31,5 +32,8 @@ struct Allocator { //lj,fdbnm bcgjkmpjdfybt ( yfcktljdfnm yfghbvgth)
      }
 
 };
+
+
+}
 
 #endif // ALLOCATOR_H

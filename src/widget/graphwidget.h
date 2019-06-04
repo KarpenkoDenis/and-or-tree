@@ -5,6 +5,8 @@
 #include "container/domain/tree.h"
 #include "container/domain/node.h"
 
+using namespace TreeContainer;
+
 class TreeNode;
 
 class GraphWidget : public QGraphicsView

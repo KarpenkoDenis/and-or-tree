@@ -4,6 +4,8 @@
 #include <QVBoxLayout>
 #include "container/domain/tree.h"
 
+using namespace TreeContainer;
+
 class SearchResultBoxLayout : public QVBoxLayout
 {
     Q_OBJECT
