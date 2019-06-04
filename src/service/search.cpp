@@ -1,10 +1,10 @@
 #include "search.h"
 #include <QDebug>
-QVector<Tree*> findTrees(QVector<Tree*> trees, QMap<QString, QString> properties)
+QVector<Tree<QString>*> findTrees(QVector<Tree<QString>*> trees, QMap<QString, QString> properties)
 {
     if(properties.size() == 0)
         return trees;
-    QVector<Tree*> resultTrees;
+    QVector<Tree<QString>*> resultTrees;
     int currNum=0;
     for(auto tree : trees)
     {
@@ -37,12 +37,12 @@ QVector<Tree*> findTrees(QVector<Tree*> trees, QMap<QString, QString> properties
     return resultTrees;
 }
 
-QMap<QString, QList<QString>> findProperties(QVector<Tree*> trees)
+QMap<QString, QList<QString>> findProperties(QVector<Tree<QString>*> trees)
 {
     QMap<QString, QList<QString>> resultProperties;
     for(auto tree : trees)
     {
-        for(TreeIterator iter = tree->begin(); iter!=tree->end(); ++iter)
+        for(TreeIterator<QString> iter = tree->begin(); iter!=tree->end(); ++iter)
         {
             qDebug() << "(*iter).getName()"  << (*iter).getName();
             if((*iter).getType() == Or)

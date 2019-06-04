@@ -11,7 +11,7 @@ public:
     explicit SearchResultBoxLayout();
     ~SearchResultBoxLayout();
 
-    void configure(QVector<Tree*>);
+    void configure(QVector<Tree<QString>*>);
 private:
     void clearLayout(QLayout *);
 signals:

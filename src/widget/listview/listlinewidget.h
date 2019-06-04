@@ -9,17 +9,17 @@ class ListLineWidget : public QWidget
 {
     Q_OBJECT
 public:
-    explicit ListLineWidget(Tree *tree, QWidget *parent = nullptr);
+    explicit ListLineWidget(Tree<QString> *tree, QWidget *parent = nullptr);
     ~ListLineWidget();
 
 private:
-    Tree* tree;
+    Tree<QString>* tree;
     QPushButton * editButton = nullptr;
     QPushButton * removeButton = nullptr;
 
 signals:
-    void editButtonClicked(Tree *tree);
-    void removeButtonClicked(Tree *tree);
+    void editButtonClicked(Tree<QString> *tree);
+    void removeButtonClicked(Tree<QString> *tree);
 
 public slots:
     void handleEditButtonClick();

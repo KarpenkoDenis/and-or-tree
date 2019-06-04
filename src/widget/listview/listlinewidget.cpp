@@ -5,7 +5,7 @@
 #include <QObject>
 #include <QDebug>
 
-ListLineWidget::ListLineWidget(Tree *tree, QWidget *parent) : QWidget(parent)
+ListLineWidget::ListLineWidget(Tree<QString> *tree, QWidget *parent) : QWidget(parent)
 {
     this->tree = tree;
 

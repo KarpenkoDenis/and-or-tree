@@ -33,7 +33,7 @@ void MainWindow::handleAddTreeButtonClick()
     addTreePopup->show();
 }
 
-void MainWindow::openEditor(Tree *tree)
+void MainWindow::openEditor(Tree<QString> *tree)
 {
     ui->stackedWidget->setCurrentIndex(1);
     graphWidget->configure(tree);
@@ -41,7 +41,7 @@ void MainWindow::openEditor(Tree *tree)
 
 void MainWindow::handleAddSearchCriteriaButtonClick()
 {
-    QVector<Tree*> trees = stateManager->getTrees();
+    QVector<Tree<QString>*> trees = stateManager->getTrees();
     QMap<QString, QList<QString>> possibleSearchCriteria = findProperties(trees);
     searchCriteriaBoxLayout->addSearchCriteriaWidget(new SearchCriteriaWidget(possibleSearchCriteria));
 }
@@ -49,7 +49,7 @@ void MainWindow::handleAddSearchCriteriaButtonClick()
 void MainWindow::handleSearchButtonClick()
 {
     QMap<QString, QString> searchCriteria = searchCriteriaBoxLayout->getSearchCriteria();
-    QVector<Tree*> searchResult = findTrees(stateManager->getTrees(), searchCriteria);
+    QVector<Tree<QString>*> searchResult = findTrees(stateManager->getTrees(), searchCriteria);
     searchResultBoxLayout->configure(searchResult);
 }
 
@@ -91,8 +91,8 @@ void MainWindow::defineConnects(){
     QObject::connect(ui->searchButton, SIGNAL(clicked(bool)), this, SLOT(handleSearchButtonClick()));
     QObject::connect(ui->closeEditorButton, SIGNAL(clicked(bool)), this, SLOT(handleCloseEditorButtonClick()));
 
-    QObject::connect(listViewBoxLayout, SIGNAL(shouldOpenTreeEditor(Tree*)), this, SLOT(openEditor(Tree*)));
-    QObject::connect(listViewBoxLayout, SIGNAL(shouldRemoveTree(Tree*)), stateManager, SLOT(removeTree(Tree*)));
+    QObject::connect(listViewBoxLayout, SIGNAL(shouldOpenTreeEditor(Tree<QString>*)), this, SLOT(openEditor(Tree<QString>*)));
+    QObject::connect(listViewBoxLayout, SIGNAL(shouldRemoveTree(Tree<QString>*)), stateManager, SLOT(removeTree(Tree<QString>*)));
 
     QObject::connect(addTreePopup, SIGNAL(createTree(QString)), stateManager, SLOT(createTree(QString)));
     QObject::connect(stateManager, SIGNAL(treeCreated()), this, SLOT(refreshListView()));

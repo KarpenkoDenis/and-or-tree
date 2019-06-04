@@ -17,7 +17,7 @@ StateManager::~StateManager()
     }
 }
 
-QVector<Tree*> StateManager::getTrees()
+QVector<Tree<QString>*> StateManager::getTrees()
 {
     return trees;
 }
@@ -49,7 +49,7 @@ void StateManager::deserializeState()
         in >> treeCount;
         for(int i = 0; i < treeCount; i++)
         {
-            Tree* tree = new Tree();
+            Tree<QString>* tree = new Tree<QString>();
             in >> *tree;
             trees.append(tree);
             qDebug() << "Tree with name '" + tree->getName() + "' was restored.";
@@ -60,7 +60,7 @@ void StateManager::deserializeState()
 
 void StateManager::createTree(const QString &name)
 {
-    Tree* tree = new Tree();
+    Tree<QString>* tree = new Tree<QString>();
     tree->setName(name);
     trees.append(tree);
     qDebug() << "Tree with name '" + name + "' was created.";
@@ -68,7 +68,7 @@ void StateManager::createTree(const QString &name)
     emit treeCreated();
 }
 
-void StateManager::removeTree(Tree *tree)
+void StateManager::removeTree(Tree<QString> *tree)
 {
     trees.removeAt(trees.indexOf(tree));
     emit treeRemoved();

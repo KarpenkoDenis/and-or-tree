@@ -183,7 +183,7 @@ public:
     {
         if(!addNodeRec(parentName, name, type))
         {
-//            throw CantFindValidParentException(this, parentName, name, type);
+            throw CantFindValidParentException(this, parentName, name, type);
         }
     }
 
@@ -201,7 +201,7 @@ public:
     {
         if(!deleteNodeRec(id))
         {
-//            throw CantFindNodeToDeleteException(this, id);
+            throw CantFindNodeToDeleteException(this, id);
         }
     }
 

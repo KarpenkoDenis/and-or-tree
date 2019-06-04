@@ -13,7 +13,7 @@ SearchResultBoxLayout::~SearchResultBoxLayout()
 
 }
 
-void SearchResultBoxLayout::configure(QVector<Tree*> trees)
+void SearchResultBoxLayout::configure(QVector<Tree<QString>*> trees)
 {
     clearLayout(this);
     if (trees.size() == 0) {

@@ -13,11 +13,11 @@ class GraphWidget : public QGraphicsView
 
 public:
     GraphWidget(QWidget *parent = nullptr);
-    void configure(Tree*);
+    void configure(Tree<QString>*);
 
 private:
     TreeNode* drawTreeNode(Node<QString>*, int, int, int);
-    Tree* tree = nullptr;
+    Tree<QString>* tree = nullptr;
 
 signals:
     void shouldChangeNodeEditor(Node<QString>*);
