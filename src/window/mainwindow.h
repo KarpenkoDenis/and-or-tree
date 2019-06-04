@@ -39,7 +39,7 @@ private:
     void restoreState();
 
 public slots:
-    void openEditor(Tree *tree);
+    void openEditor(Tree<QString> *tree);
     void handleAddTreeButtonClick();
     void handleAddSearchCriteriaButtonClick();
     void handleSearchButtonClick();

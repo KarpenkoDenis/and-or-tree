@@ -1,4 +1,7 @@
 #include "treeexception.h"
+namespace TreeContainer
+{
+
 
 TreeException::TreeException(const Node<QString>* root) :
     root(root)
@@ -83,4 +86,6 @@ int CantFindNodeToDeleteException::getId() const
 
 CantFindNodeToDeleteException::~CantFindNodeToDeleteException()
 {
+}
+
 }

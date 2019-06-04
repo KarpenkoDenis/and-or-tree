@@ -14,7 +14,7 @@ GraphWidget::GraphWidget(QWidget *parent)
     setMinimumSize(400, 400);
 }
 
-void GraphWidget::configure(Tree *tree)
+void GraphWidget::configure(Tree<QString> *tree)
 {
     this->tree = tree;
     scene()->clear();

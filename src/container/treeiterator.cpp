@@ -1,109 +1,71 @@
-#include "treeiterator.h"
+//#include "treeiterator.h"
 
 
 
-TreeIterator::TreeIterator(Tree *r, Node<QString> *c) :
-    r(r), c(c)
-{
-
-}
-
-
-TreeIterator::TreeIterator(const TreeIterator& it) :
-    r(it.r), c(it.c)
-{
-
-}
-
-
-bool TreeIterator::operator!=(TreeIterator const& other) const
-{
-    return r != other.r || c != other.c;
-}
-
-
-bool TreeIterator::operator==(TreeIterator const& other) const
-{
-    return r == other.r && c == other.c;
-}
-
-
-typename TreeIterator::reference TreeIterator::operator*() const
-{
-    return *c;
-}
-
-//inline Node *  findNext(Node * n, Node finding)
+//TreeIterator::TreeIterator(Tree<QString> *r, Node<QString> *c) :
+//    r(r), c(c)
 //{
-//    static Node * last = nullptr;
-//    if(*last == finding)
+
+//}
+
+
+//TreeIterator::TreeIterator(const TreeIterator& it) :
+//    r(it.r), c(it.c)
+//{
+
+//}
+
+
+//bool TreeIterator::operator!=(TreeIterator const& other) const
+//{
+//    return r != other.r || c != other.c;
+//}
+
+
+//bool TreeIterator::operator==(TreeIterator const& other) const
+//{
+//    return r == other.r && c == other.c;
+//}
+
+
+//typename TreeIterator::reference TreeIterator::operator*() const
+//{
+//    return *c;
+//}
+
+//TreeIterator &TreeIterator::operator++()
+//{
+//    auto save = c->findKLP_next();
+//    if(save)
 //    {
-//        return n;
+//        c = save;
+//    }
+//    else {
+//         c = findNext(&(r->root), *c);
 //    }
 
-//    unsigned i=0;
-//    for(auto iter = n->children.begin(); iter!=n->children.end(); ++iter)
+//    return *this;
+//}
+
+//Node<QString> *TreeIterator::findNext(Node<QString> *curr, Node<QString> finding)
+//{
+//    KLP(&r->root);
+//    for(auto iter = passed.begin(); iter!=passed.end(); ++iter)
 //    {
-//        if((*iter) == finding)
+//        if(**iter == finding)
 //        {
-//            if(i+1 < n->children.size())
-//                return  &*(iter+1);
+//            if(*(iter+1))
+//                return *(iter+1);
 //        }
-//        auto save = findNext(&*iter, finding);
-//        if(save != nullptr)
-//            return save;
-//        i++;
 //    }
-
-////    for(Node c: n->children)
-////    {
-////        if(c == finding)
-////        {
-////            if(i+1 < n->children.size())
-////                return  &n->children.at(i+1);
-////        }
-////        auto save = findNext(&c, finding);
-////        if(save != nullptr)
-////            return save;
-////        i++;
-////    }
-//    last = n;
 //    return nullptr;
 //}
 
-TreeIterator &TreeIterator::operator++()
-{
-    auto save = c->findKLP_next();
-    if(save)
-    {
-        c = save;
-    }
-    else {
-         c = findNext(&(r->root), *c);
-    }
-
-    return *this;
-}
-
-Node<QString> *TreeIterator::findNext(Node<QString> *curr, Node<QString> finding)
-{
-    KLP(&r->root);
-    for(auto iter = passed.begin(); iter!=passed.end(); ++iter)
-    {
-        if(**iter == finding)
-        {
-            if(*(iter+1))
-                return *(iter+1);
-        }
-    }
-    return nullptr;
-}
-
-void TreeIterator::KLP(Node<QString> *curr)
-{
-    passed.push_back(curr);
-    for(auto iter = curr->children.begin(); iter!=curr->children.end(); ++iter)
-    {
-        KLP(&*iter);
-    }
-}
+//void TreeIterator::KLP(Node<QString> *curr)
+//{
+//    passed.push_back(curr);
+//    for(auto iter = curr->children.begin(); iter!=curr->children.end(); ++iter)
+//    {
+//        KLP(&*iter);
+//    }
+//}

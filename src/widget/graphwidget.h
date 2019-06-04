@@ -5,6 +5,8 @@
 #include "container/domain/tree.h"
 #include "container/domain/node.h"
 
+using namespace TreeContainer;
+
 class TreeNode;
 
 class GraphWidget : public QGraphicsView
@@ -13,11 +15,11 @@ class GraphWidget : public QGraphicsView
 
 public:
     GraphWidget(QWidget *parent = nullptr);
-    void configure(Tree*);
+    void configure(Tree<QString>*);
 
 private:
     TreeNode* drawTreeNode(Node<QString>*, int, int, int);
-    Tree* tree = nullptr;
+    Tree<QString>* tree = nullptr;
 
 signals:
     void shouldChangeNodeEditor(Node<QString>*);

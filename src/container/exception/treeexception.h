@@ -6,6 +6,7 @@
 #include "container/domain/node.h"
 //template <class T>
 //class Node<T>;
+namespace TreeContainer {
 
 class TreeException
 {
@@ -46,4 +47,5 @@ private:
     int id;
 };
 
+}
 #endif // TREEEXCEPTION_H

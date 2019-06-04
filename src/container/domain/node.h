@@ -9,6 +9,8 @@
 #include <QDebug>
 #include <QDataStream>
 
+namespace TreeContainer {
+
 
 
 enum  Type {And, Or};
@@ -183,7 +185,7 @@ public:
     {
         if(!addNodeRec(parentName, name, type))
         {
-//            throw CantFindValidParentException(this, parentName, name, type);
+            throw CantFindValidParentException(this, parentName, name, type);
         }
     }
 
@@ -201,7 +203,7 @@ public:
     {
         if(!deleteNodeRec(id))
         {
-//            throw CantFindNodeToDeleteException(this, id);
+            throw CantFindNodeToDeleteException(this, id);
         }
     }
 
@@ -296,4 +298,5 @@ public:
 
 };
 
+}
 #endif // NODE_H

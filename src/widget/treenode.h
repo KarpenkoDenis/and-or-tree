@@ -4,6 +4,8 @@
 #include <QGraphicsItem>
 #include "container/domain/node.h"
 
+using namespace TreeContainer;
+
 class Edge;
 class GraphWidget;
 class QGraphicsSceneMouseEvent;

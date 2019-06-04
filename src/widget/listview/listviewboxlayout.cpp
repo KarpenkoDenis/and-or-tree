@@ -7,13 +7,13 @@ ListViewBoxLayout::ListViewBoxLayout() : QVBoxLayout ()
 
 }
 
-void ListViewBoxLayout::configure(QVector<Tree *> trees)
+void ListViewBoxLayout::configure(QVector<Tree<QString> *> trees)
 {
     clearLayout(this);
     for(auto tree : trees){
         auto widget = new ListLineWidget(tree);
-        QObject::connect(widget, SIGNAL(editButtonClicked(Tree*)), this, SLOT(handleEditButtonClick(Tree*)));
-        QObject::connect(widget, SIGNAL(removeButtonClicked(Tree*)), this, SLOT(handleRemoveButtonClick(Tree*)));
+        QObject::connect(widget, SIGNAL(editButtonClicked(Tree<QString>*)), this, SLOT(handleEditButtonClick(Tree<QString>*)));
+        QObject::connect(widget, SIGNAL(removeButtonClicked(Tree<QString>*)), this, SLOT(handleRemoveButtonClick(Tree<QString>*)));
         addWidget(widget);
     }
 }
@@ -33,12 +33,12 @@ void ListViewBoxLayout::clearLayout(QLayout *)
     }
 }
 
-void ListViewBoxLayout::handleEditButtonClick(Tree* tree)
+void ListViewBoxLayout::handleEditButtonClick(Tree<QString>* tree)
 {
     emit shouldOpenTreeEditor(tree);
 }
 
-void ListViewBoxLayout::handleRemoveButtonClick(Tree *tree)
+void ListViewBoxLayout::handleRemoveButtonClick(Tree<QString> *tree)
 {
     emit shouldRemoveTree(tree);
 }
