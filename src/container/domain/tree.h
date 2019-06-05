@@ -19,7 +19,7 @@ public:
     QString name;
 
 //    void addNode( int parentID, QString name, Type t);
-//    void deleteNode( int id);
+
 //    void clear();
 //    int size();
 //    Node *find(QString name);
@@ -142,6 +142,10 @@ iterator end()
         last = &*(save);
     }
     return iterator(*this, last);
+}
+void deleteNode(Node<QString> *node)
+{
+    root.deleteNode(node);
 }
 
 };

@@ -20,8 +20,9 @@ NodeEditor::~NodeEditor()
     delete nodeTypeComboBox;
 }
 
-void NodeEditor::configure(Node<QString> *node)
+void NodeEditor::configure(Tree<QString>* tree, Node<QString> *node, bool isRoot)
 {
+    currentTree = tree;
     currentNode = node;
     nodeNameLineEdit->setText(currentNode->getName());
     if(currentNode->getType() == And)
@@ -31,6 +32,7 @@ void NodeEditor::configure(Node<QString> *node)
     else {
         nodeTypeComboBox->setCurrentIndex(0);
     }
+    removeNodeButton->setEnabled(!isRoot);
     // TODO set value to combobox
 }
 
@@ -65,6 +67,23 @@ void NodeEditor::handleAddChildNodeButtonClick()
     }
 }
 
+void NodeEditor::handleRemoveNodeButtonClick()
+{
+    if (currentNode) {
+        qDebug() << "RemoveNodeButton handler";
+        currentTree->deleteNode(currentNode);
+        currentTree = nullptr;
+        currentNode = nullptr;
+        nodeNameLineEdit->setText("");
+        nodeTypeComboBox->setCurrentIndex(0);
+
+
+//        currentNode->addNode("Новый узел", Type::And);
+
+        emit shouldRefreshGraphWidget();
+    }
+}
+
 void NodeEditor::initializeLayout()
 {
     nodeNameLineEdit = new QLineEdit();
@@ -72,6 +91,7 @@ void NodeEditor::initializeLayout()
     nodeTypeComboBox->addItem("Или");
     nodeTypeComboBox->addItem("И");
     addChildNodeButton = new QPushButton("Добавить дочерний узел");
+    removeNodeButton = new QPushButton("Удалить узел");
 
     auto layout = new QVBoxLayout();
 
@@ -79,6 +99,7 @@ void NodeEditor::initializeLayout()
     layout->addWidget(nodeNameLineEdit);
     layout->addWidget(nodeTypeComboBox);
     layout->addWidget(addChildNodeButton);
+    layout->addWidget(removeNodeButton);
     layout->addStretch(1);
 
     this->setLayout(layout);
@@ -89,6 +110,7 @@ void NodeEditor::defineConnects()
     QObject::connect(nodeNameLineEdit, SIGNAL(textChanged(QString)), this, SLOT(handleNodeNameLineEditChange(QString)));
     QObject::connect(nodeTypeComboBox, SIGNAL(currentIndexChanged(int)), this, SLOT(handleNodeTypeComboBoxChange(int)));
     QObject::connect(addChildNodeButton, SIGNAL(clicked()), this, SLOT(handleAddChildNodeButtonClick()));
+    QObject::connect(removeNodeButton, SIGNAL(clicked()), this, SLOT(handleRemoveNodeButtonClick()));
 
 }
 

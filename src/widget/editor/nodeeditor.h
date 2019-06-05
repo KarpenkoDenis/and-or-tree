@@ -3,6 +3,7 @@
 
 #include <QWidget>
 #include "container/domain/node.h"
+#include "container/domain/tree.h"
 #include <QLabel>
 #include <QLineEdit>
 #include <QPushButton>
@@ -24,9 +25,11 @@ public:
 
 private:
     Node<QString> *currentNode = nullptr;
+    Tree<QString>* currentTree = nullptr;
     QLineEdit *nodeNameLineEdit = nullptr;
     QComboBox *nodeTypeComboBox = nullptr;
     QPushButton *addChildNodeButton = nullptr;
+    QPushButton *removeNodeButton = nullptr;
 
     void initializeLayout();
     void defineConnects();
@@ -36,7 +39,8 @@ signals:
 
 public slots:
     void handleAddChildNodeButtonClick();
-    void configure(Node<QString> *node);
+    void handleRemoveNodeButtonClick();
+    void configure(Tree<QString>*, Node<QString> *node, bool isRoot);
     void handleNodeNameLineEditChange(QString);
     void handleNodeTypeComboBoxChange(int);
 };

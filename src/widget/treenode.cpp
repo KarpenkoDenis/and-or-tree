@@ -43,7 +43,17 @@ void TreeNode::mousePressEvent(QGraphicsSceneMouseEvent *event)
 {
     update();
     QGraphicsItem::mousePressEvent(event);
-    emit treeNodeClicked(node);
+    emit treeNodeClicked(node, isRoot);
+}
+
+bool TreeNode::getIsRoot() const
+{
+    return isRoot;
+}
+
+void TreeNode::setIsRoot(bool value)
+{
+    isRoot = value;
 }
 
 Node<QString> *TreeNode::getNode() const

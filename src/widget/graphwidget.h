@@ -18,14 +18,14 @@ public:
     void configure(Tree<QString>*);
 
 private:
-    TreeNode* drawTreeNode(Node<QString>*, int, int, int);
+    TreeNode* drawTreeNode(Node<QString>*, int, int, int, bool);
     Tree<QString>* tree = nullptr;
 
 signals:
-    void shouldChangeNodeEditor(Node<QString>*);
+    void shouldChangeNodeEditor(Tree<QString>*, Node<QString>*, bool);
 
 public slots:
-    void handleTreeNodeClick(Node<QString>*);
+    void handleTreeNodeClick(Node<QString>*, bool);
     void refreshWidget();
 };
 

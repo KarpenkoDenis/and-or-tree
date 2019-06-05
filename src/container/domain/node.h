@@ -206,6 +206,21 @@ public:
             throw CantFindNodeToDeleteException(this, id);
         }
     }
+    void deleteNode(Node<T> *node)
+    {
+        for( auto iter = children.begin(); iter < children.end(); iter++)
+        {
+            if( &*node == &*iter)
+            {
+                children.erase(iter);
+                return;
+            }
+        }
+        for( auto iter = children.begin(); iter < children.end(); iter++)
+        {
+            (*iter).deleteNode(node);
+        }
+    }
 
 
 

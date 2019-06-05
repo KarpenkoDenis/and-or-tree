@@ -27,6 +27,9 @@ public:
     Node<QString> *getNode() const;
     void setNode(Node<QString> *value);
 
+    bool getIsRoot() const;
+    void setIsRoot(bool value);
+
 protected:
     void mousePressEvent(QGraphicsSceneMouseEvent *event) override;
 
@@ -36,9 +39,10 @@ private:
     QPointF newPos;
     GraphWidget *graph;
     Node<QString> *node;
+    bool isRoot;
 
 signals:
-    void treeNodeClicked(Node<QString>*);
+    void treeNodeClicked(Node<QString>*, bool);
 
 };
 #endif // TREENODE_H

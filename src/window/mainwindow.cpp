@@ -97,7 +97,7 @@ void MainWindow::defineConnects(){
     QObject::connect(addTreePopup, SIGNAL(createTree(QString)), stateManager, SLOT(createTree(QString)));
     QObject::connect(stateManager, SIGNAL(treeCreated()), this, SLOT(refreshListView()));
     QObject::connect(stateManager, SIGNAL(treeRemoved()), this, SLOT(refreshListView()));
-    QObject::connect(graphWidget, SIGNAL(shouldChangeNodeEditor(Node<QString>*)), nodeEditor, SLOT(configure(Node<QString>*)));
+    QObject::connect(graphWidget, SIGNAL(shouldChangeNodeEditor(Tree<QString>*, Node<QString>*, bool)), nodeEditor, SLOT(configure(Tree<QString>*, Node<QString>*, bool)));
 
     QObject::connect(nodeEditor, SIGNAL(shouldRefreshGraphWidget()), graphWidget, SLOT(refreshWidget()));
 }
