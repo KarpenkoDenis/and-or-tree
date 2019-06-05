@@ -37,9 +37,9 @@ QVector<Tree<QString>*> findTrees(QVector<Tree<QString>*> trees, QMap<QString, Q
     return resultTrees;
 }
 
-QMap<QString, QList<QString>> findProperties(QVector<Tree<QString>*> trees)
+QMap<QString, QSet<QString>> findProperties(QVector<Tree<QString>*> trees)
 {
-    QMap<QString, QList<QString>> resultProperties;
+    QMap<QString, QSet<QString>> resultProperties;
     for(auto tree : trees)
     {
         for(TreeIterator<QString> iter = tree->begin(); iter!=tree->end(); ++iter)
@@ -48,11 +48,11 @@ QMap<QString, QList<QString>> findProperties(QVector<Tree<QString>*> trees)
             if((*iter).getType() == Or)
             {
 
-                QList<QString> childNames = resultProperties[(*iter).getName()];
+                QSet<QString> childNames = resultProperties[(*iter).getName()];
                 qDebug() << "(*iter).getType() == Or";
                 for(auto child : (*iter).children)
                 {
-                    childNames.append(child.getName());
+                    childNames.insert(child.getName());
                 }
                 resultProperties.insert((*iter).getName(), childNames);
             }

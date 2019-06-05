@@ -2,8 +2,9 @@
 #include "search.h"
 #include <QHBoxLayout>
 #include <QMap>
+#include <QSet>
 
-SearchCriteriaWidget::SearchCriteriaWidget(QMap<QString, QList<QString>> possibleSearchCriteria, QWidget *parent) : QWidget(parent)
+SearchCriteriaWidget::SearchCriteriaWidget(QMap<QString, QSet<QString>> possibleSearchCriteria, QWidget *parent) : QWidget(parent)
 {
     initializeWidget(possibleSearchCriteria);
     configureConnects();
@@ -24,7 +25,7 @@ QPair<QString, QString> SearchCriteriaWidget::getCriteria()
     return criteria;
 }
 
-void SearchCriteriaWidget::initializeWidget(QMap<QString, QList<QString>> possibleSearchCriteria)
+void SearchCriteriaWidget::initializeWidget(QMap<QString, QSet<QString>> possibleSearchCriteria)
 {
     this->possibleSearchCriteria = possibleSearchCriteria;
 
@@ -55,7 +56,12 @@ void SearchCriteriaWidget::configureConnects()
 void SearchCriteriaWidget::handleSearchCriteriaTypeSelect(QString typeName)
 {
     searchCriteriaValueComboBox->clear();
-    searchCriteriaValueComboBox->addItems(possibleSearchCriteria[typeName]);
+    QList<QString> saveProperties;
+    for(QString curr:possibleSearchCriteria[typeName])
+    {
+        saveProperties.append(curr);
+    }
+    searchCriteriaValueComboBox->addItems(saveProperties);
     searchCriteriaValueComboBox->setCurrentIndex(0);
 }
 

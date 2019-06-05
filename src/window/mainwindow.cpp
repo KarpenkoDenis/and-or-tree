@@ -42,7 +42,7 @@ void MainWindow::openEditor(Tree<QString> *tree)
 void MainWindow::handleAddSearchCriteriaButtonClick()
 {
     QVector<Tree<QString>*> trees = stateManager->getTrees();
-    QMap<QString, QList<QString>> possibleSearchCriteria = findProperties(trees);
+    QMap<QString, QSet<QString>> possibleSearchCriteria = findProperties(trees);
     searchCriteriaBoxLayout->addSearchCriteriaWidget(new SearchCriteriaWidget(possibleSearchCriteria));
 }
 

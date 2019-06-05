@@ -9,7 +9,7 @@ class SearchCriteriaWidget : public QWidget
 {
     Q_OBJECT
 public:
-    explicit SearchCriteriaWidget(QMap<QString, QList<QString>>, QWidget *parent = nullptr);
+    explicit SearchCriteriaWidget(QMap<QString, QSet<QString>>, QWidget *parent = nullptr);
     ~SearchCriteriaWidget();
 
     QPair<QString, QString> getCriteria();
@@ -19,9 +19,9 @@ private:
     QComboBox *searchCriteriaValueComboBox = nullptr;
     QPushButton *removeSearchCriteriaButton = nullptr;
 
-    QMap<QString, QList<QString>> possibleSearchCriteria;
+    QMap<QString, QSet<QString>> possibleSearchCriteria;
 
-    void initializeWidget(QMap<QString, QList<QString>> possibleSearchCriteria);
+    void initializeWidget(QMap<QString, QSet<QString>> possibleSearchCriteria);
     void configureConnects();
 signals:
     void shouldRemoveSearchCriteria(SearchCriteriaWidget*);
